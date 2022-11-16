@@ -1,0 +1,14 @@
+.header{
+    justify-content: center;    
+    text-align: center;
+}
+
+.productContainer{
+    border-color: darkgreen;
+    border-width: 3px;
+    margin:5px;
+    border-style: solid;
+    padding: 5px;
+    border-radius: 20px;
+    text-align: center;
+}
