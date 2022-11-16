@@ -1,14 +1,17 @@
-export default (state, action) => {
+const initalCategory={
+    category:[]
+  }
+
+const categoryReducer= (state=initalCategory, action) => {
     switch (action.type) {
       case 'GET_CATEGORY_REQUEST':
         return {
           ...state,
-          categories: {
-            ...state,
-            data: action.data
-          }
+          category: action.data
         }
       default:
         return state
     }
 }
+
+export default categoryReducer

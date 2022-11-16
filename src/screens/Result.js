@@ -3,16 +3,32 @@ import { useSelector } from 'react-redux'
 import '../styles/Main.css'
 import { useState } from 'react'
 
+import { useDispatch } from 'react-redux'
+import { getCategoryRequest } from '../store/categories/categoryAction'
+
+
 const Result = () => {
 
-  const [isShown, setIsShown]= useState(false);
+  const [isShown, setIsShown]= useState(null);
+  const [categoryShown, setCategoryShown]= useState(false);
 
-  const showDetails = (e) =>{
-    setIsShown(current => !current)
+  const showDetails = (targetId) =>{
+    setIsShown(targetId);
   }
 
-  const products = useSelector(state => state.products)
-  console.log( products)
+  const categoryDispatch=useDispatch;  
+  categoryDispatch(getCategoryRequest());
+
+  const showCategory=()=>{
+    //categoryDispatch(getCategoryRequest());
+    setCategoryShown(!categoryShown);
+  }
+
+  const products = useSelector(state => { 
+    console.log(state)
+    return state.data.products 
+  })
+  
 
   return (
     <div>
@@ -21,22 +37,25 @@ const Result = () => {
           products?.loading && <div>Loading</div>
         } 
         {
-          !products?.loading && products?.data?.length > 0 && (
+          !products?.loading && products?.length > 0 && (
             <div>
-                {/*<div class="header">
-                   <button>Filter</button> 
-                </div>*/}
-                
+                <div class="header">
+                  <button onClick={showCategory}>Filter</button>                   
+                  {categoryShown === true && (
+                    <div> {'Price: '} </div>
+                  ) }
+                </div>
+
                 <div>
-                    {products.data.map((product)=>(
-                        <div key={product.id} class='productContainer' onClick={showDetails} >
+                    {products.map((product)=>(
+                        <div key={product.id} class='productContainer' onClick={() => showDetails(product.id)} >
                             {product.title}
-                            {isShown && (<div> {'Price: ' + product.price} </div>) } 
+                            {isShown === product.id && (<div> {'Price: ' + product.price} </div>) } 
                         </div>
                     ))}
                 </div>
             </div>
-            
+
           )
         }
     </div>

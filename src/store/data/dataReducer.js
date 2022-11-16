@@ -1,23 +1,23 @@
-export default (state, action) => {
+const initalData={
+  products:[]
+}
+
+const dataReducer=(state=initalData, action) => {
   switch (action.type) {
     case 'GET_DATA_REQUEST':
       return {
-        ...state,
-        products: {
-          ...state,               //.drinks,
-          loading: true
-        }
+        ...state,             
+        loading: true
       }
     case 'GET_DATA_REQUEST_SUCCESS':
       return {
-        ...state,
-        products: {
-          ...state,                 //.drinks,
-          loading: false,
-          data: action.data         //.drinks
-        }
+        ...state,             
+        loading: false,
+        products: action.data     
       }
     default:
       return state
   }
 }
+
+export default dataReducer
