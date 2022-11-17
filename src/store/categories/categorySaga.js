@@ -5,7 +5,6 @@ import { getCategoryRequest } from './categoryAction'
 function* fetchCategoryData() {
   try {
     const data = yield call(getCategoryList)
-    console.log(data, 'elma');
     yield put(getCategoryRequest(data))
   } catch (err) {
     console.log('err', err)

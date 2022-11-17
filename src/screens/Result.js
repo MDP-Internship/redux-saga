@@ -1,29 +1,17 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector} from 'react-redux'
 import '../styles/Main.css'
-import { useState } from 'react'
-
-import { useDispatch } from 'react-redux'
-import { getCategoryRequest } from '../store/categories/categoryAction'
+import { useState} from 'react'
+import Categories from './components/categoryButton'
 
 
 const Result = () => {
 
   const [isShown, setIsShown]= useState(null);
-  const [categoryShown, setCategoryShown]= useState(false);
 
   const showDetails = (targetId) =>{
     setIsShown(targetId);
-  }
-
-  const categoryDispatch=useDispatch;  
-  categoryDispatch(getCategoryRequest());
-
-  const showCategory=()=>{
-    //categoryDispatch(getCategoryRequest());
-    setCategoryShown(!categoryShown);
-  }
-
+  }    
+  
   const products = useSelector(state => { 
     console.log(state)
     return state.data.products 
@@ -39,13 +27,7 @@ const Result = () => {
         {
           !products?.loading && products?.length > 0 && (
             <div>
-                <div class="header">
-                  <button onClick={showCategory}>Filter</button>                   
-                  {categoryShown === true && (
-                    <div> {'Price: '} </div>
-                  ) }
-                </div>
-
+                <Categories/>
                 <div>
                     {products.map((product)=>(
                         <div key={product.id} class='productContainer' onClick={() => showDetails(product.id)} >

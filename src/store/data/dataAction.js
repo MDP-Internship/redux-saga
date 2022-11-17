@@ -6,3 +6,4 @@ export const getDataRequestSuccess = data => ({
   type: 'GET_DATA_REQUEST_SUCCESS',
   data
 })
+

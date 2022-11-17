@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { getDataRequest } from '../store/data/dataAction'
-
 import '../styles/Main.css'
 
 const Header = () => {
@@ -14,7 +13,7 @@ const Header = () => {
         <button
           type="button"
           onClick={() => {
-            dispatch(getDataRequest())
+            dispatch(getDataRequest());            
           }}
         >
           Show all products

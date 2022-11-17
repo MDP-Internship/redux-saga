@@ -3,24 +3,24 @@ import createSagaMiddleware from 'redux-saga'
 import allReducers from './reducers'
 import dataSaga from './data/dataSaga'
 import categorySaga from './categories/categorySaga'
-import dataReducer from './data/dataReducer'
+import categorizedSaga from './categorizedProduct/categorizedSaga'
 
 const dataSagaMiddleware = createSagaMiddleware()
 const categorySagaMiddleware = createSagaMiddleware()
+const categorizedProductSagaMiddleware = createSagaMiddleware()
 
-let middleware = applyMiddleware(dataSagaMiddleware,categorySagaMiddleware);
+let middleware = applyMiddleware(dataSagaMiddleware,categorySagaMiddleware, categorizedProductSagaMiddleware);
 const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 const enhancer = composeEnhancers(middleware);
-// const store = createStore(rootReducer, enhancer);
 
 const store = createStore(
   allReducers,
   enhancer
-  // window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION()
 )
 console.log(store.getState(), 2222);
 
 dataSagaMiddleware.run(dataSaga)
 categorySagaMiddleware.run(categorySaga)
+categorizedProductSagaMiddleware.run(categorizedSaga)
 
 export default store
