@@ -37,12 +37,23 @@ function Categories(){
 
     return(
         <div class="header">
-          <button onClick={showCategory}>Filter</button>                   
-          {categoryShown === true && (
-            categories?.map((category)=>(
-              <div key={category} onClick={showCategorizedProducts(category)}>{category}</div>
-            ))
-          ) }
+            <button onClick={showCategory}>Filter</button>                   
+            { categoryShown === true && (
+              categories?.map((category)=>(
+                <div key={category} onClick={showCategorizedProducts(category)}>{category}</div>
+              ))           
+            ) 
+            }
+
+            {   categorizedProducts?.length>0 && (
+                categorizedProducts.map((product)=>(
+                    <div>
+                        <div key={product.id}>{product}</div>       
+                        <div>{"helo"}</div>
+                    </div>
+                ))
+                )
+             }
         </div>
     )
 

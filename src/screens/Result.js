@@ -6,7 +6,7 @@ import Categories from './components/categoryButton'
 
 const Result = () => {
 
-  const [isShown, setIsShown]= useState(null);
+  const [isShown, setIsShown]= useState(null);  
 
   const showDetails = (targetId) =>{
     setIsShown(targetId);

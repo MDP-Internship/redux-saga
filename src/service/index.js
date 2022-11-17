@@ -26,7 +26,7 @@ export async function getJeweleryList() {
     'https://fakestoreapi.com/products/category/jewelery'
   )
   const result = await response.json()
-  console.log(result)
+  //console.log(result)
   return result
 }
 
@@ -54,4 +54,17 @@ export async function getWomensClothingList() {
   )
   const result = await response.json()
   return result
+}
+
+
+//addProduct
+export async function getAdd(data) {
+  const response = await fetch(
+    "https://fakestoreapi.com/products",{
+      method: 'POST',
+      body:JSON.stringify(data)
+    }
+  )
+  const result = await response.json();
+  return result;
 }
