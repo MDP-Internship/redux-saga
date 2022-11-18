@@ -7,7 +7,7 @@ function* fetchData() {
     const data = yield call(getDataList)
     yield put(getDataRequestSuccess(data))
   } catch (err) {
-    console.log('err', err)
+    // console.log('err', err)
   }
 }
 

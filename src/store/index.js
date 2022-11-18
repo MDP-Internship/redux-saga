@@ -17,7 +17,7 @@ const store = createStore(
   allReducers,
   enhancer
 )
-console.log(store.getState(), 2222);
+// console.log(store.getState(), 2222);
 
 dataSagaMiddleware.run(dataSaga)
 categorySagaMiddleware.run(categorySaga)

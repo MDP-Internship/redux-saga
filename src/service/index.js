@@ -1,3 +1,7 @@
+/**
+ * Buradaki tüm metotlar aslında saganın içinde olmalı
+ * tek bir request metodun olmalı ve onu saganın içinde aşağıdakileri yazıp çağırmalısın
+ */
 export async function getDataList() {
   const response = await fetch(
     'https://fakestoreapi.com/products'    
@@ -26,7 +30,7 @@ export async function getJeweleryList() {
     'https://fakestoreapi.com/products/category/jewelery'
   )
   const result = await response.json()
-  console.log(result)
+  // console.log(result)
   return result
 }
 

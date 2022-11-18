@@ -7,7 +7,7 @@ function* fetchJewelery() {
     const data = yield call(getJeweleryList)
     yield put(getJeweleryRequest(data))
   } catch (err) {
-    console.log('err', err)
+    // console.log('err', err)
   }
 }
 
@@ -21,7 +21,7 @@ function* fetchElectronics() {
     const data = yield call(getElectronicsList)
     yield put(getElectronicsRequest(data))
   } catch (err) {
-    console.log('err', err)
+    // console.log('err', err)
   }
 }
 
@@ -35,7 +35,7 @@ function* fetchMenClothing() {
     const data = yield call(getMensClothingList)
     yield put(getMenClothingRequest(data))
   } catch (err) {
-    console.log('err', err)
+    // console.log('err', err)
   }
 }
 
@@ -49,7 +49,7 @@ function* fetchWomenClothing() {
     const data = yield call(getWomensClothingList)
     yield put(getWomenClothingRequest(data))
   } catch (err) {
-    console.log('err', err)
+    // console.log('err', err)
   }
 }
 
