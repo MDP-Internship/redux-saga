@@ -11,7 +11,7 @@ const initalNewProduct={
 
 const newProductReducer= (state=initalNewProduct, action) => {
     switch (action.type) {
-      case 'PUT_NEW_PRODUCT_REQUEST':
+      case 'POST_NEW_PRODUCT_REQUEST':
         return {
           ...state,
           newProduct: action.data
@@ -19,7 +19,6 @@ const newProductReducer= (state=initalNewProduct, action) => {
       default:
         return state
     }
-    console.log(state);
 }
 
 export default newProductReducer

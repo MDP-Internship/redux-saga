@@ -33,21 +33,29 @@ function AddProduct(){
 
     return(
         <div class="header">
-            <button onClick={formShow}>ADD NEW PRODUCT</button>
+            <button class="button" onClick={formShow}>Add New Product</button>
             {
                 isFormShown===true && (
                     <div>
                         <form>
                             <div>
-                                <label for="title"> Title</label>
+                                <label for="title"> Title: </label>
                                 <input type="text" id="title" name="title"  onChange={formData("title")}/>
                             </div>    
                             <div>
-                                <label for="price"> Price </label>
+                                <label for="price"> Price: </label>
                                 <input type="text" id="price" name="price"  onChange={formData("price")}/>     
                             </div>
+                            <div>
+                                <label for="price"> Description: </label>
+                                <input type="text" id="description" name="description"  onChange={formData("description")}/>     
+                            </div>
+                            <div>
+                                <label for="price"> Category: </label>
+                                <input type="text" id="category" name="category"  onChange={formData("category")}/>     
+                            </div>
                         </form>
-                        <button onClick={sendData}>SEND</button>
+                        <button class="category" onClick={sendData}>SEND</button>
                     </div>
                 )
             }

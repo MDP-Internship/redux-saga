@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState} from 'react'
 import { getCategoryRequest } from '../../store/categories/categoryAction'
 import { getJeweleryRequest, getElectronicsRequest, getWomenClothingRequest, getMenClothingRequest } from '../../store/categorizedProduct/categorizedAction'
+import '../../styles/Main.css'
 
 function Categories(){
 
@@ -47,10 +48,10 @@ function Categories(){
 
     return(
         <div class="header">
-            <button onClick={showCategory}>Categories</button>                   
+            <button class="button" onClick={showCategory}>Categories</button>                   
             { categoryShown === true && (
               categories?.map((category)=>(
-                <button key={category} onClick={()=>{showCategorizedProducts(category)}}>{category}</button>
+                <button class="category" key={category} onClick={()=>{showCategorizedProducts(category)}}>{category}</button>
               ))           
             ) 
             }
@@ -60,7 +61,17 @@ function Categories(){
                     <div>
                         <div key={product.id} class='productContainer' onClick={() => setIsDetailShown(product.id)}>
                             {product.title}
-                            {isDetailShown === product.id && (<div> {'Price: ' + product.price} </div>) } 
+                            {isDetailShown === product.id && (
+                                <div class="horizontal"> 
+                                <div class="vertical">                            
+                                    <div class="detail"> {"Price: "}<div class="lighter"> {product.price}</div> </div> 
+                                    <div class="detail"> {"Rating:  "} <div class="lighter"> {product.rating.rate}</div></div>                            
+                                    <div class="detail"> {"Category:  "} <div class="lighter"> {product.category}</div></div>
+                                    <div class="detail"> {"Description:  "} <div class="lighter"> {product.description}</div></div> 
+                                </div>
+                                <div><img class="image" src={product.image}/></div>        
+                            </div>
+                            )} 
                         </div>
                     </div>
                 ))
