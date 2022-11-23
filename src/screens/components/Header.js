@@ -1,8 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { getDataRequest } from '../store/data/dataAction'
-import '../styles/Main.css'
-import AddProduct  from './components/addProduct'
+import { getDataRequest } from '../../store/data/dataAction'
+import '../../styles/Main.css'
 
 const Header = () => {
 
@@ -18,8 +17,7 @@ const Header = () => {
           }}
         >
           Show all products
-        </button>
-        <AddProduct/>
+        </button>        
     </div>
     )
 }

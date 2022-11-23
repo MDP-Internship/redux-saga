@@ -1,3 +1,6 @@
+import {createAsyncThunk} from '@reduxjs/toolkit'
+import axios from 'axios'
+
 export async function getDataList() {
   const response = await fetch(
     'https://fakestoreapi.com/products'    
@@ -56,9 +59,10 @@ export async function getWomensClothingList() {
   return result
 }
 
-
 //addProduct
-export async function getAdd(data) {
+
+export async function postAdd(data) {
+  console.log(data, 45)
   const response = await fetch(
     "https://fakestoreapi.com/products",{
       method: 'POST',
@@ -68,3 +72,19 @@ export async function getAdd(data) {
   const result = await response.json();
   return result;
 }
+
+
+/*
+export const postAdd = createAsyncThunk(
+  "type/postData",
+  async (data) => {
+    try {
+      // const axios = require('axios');
+      const response = await axios.post("https://fakestoreapi.com/products", data);
+      return response.data;
+    } catch (err) {
+      console.error(err)
+    }
+  }
+);
+*/

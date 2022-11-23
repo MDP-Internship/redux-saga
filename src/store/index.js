@@ -12,6 +12,7 @@ const categorizedProductSagaMiddleware = createSagaMiddleware()
 const addSagaMiddleware = createSagaMiddleware()
 
 let middleware = applyMiddleware(dataSagaMiddleware,categorySagaMiddleware, categorizedProductSagaMiddleware, addSagaMiddleware);
+
 const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 const enhancer = composeEnhancers(middleware);
 
@@ -37,6 +38,5 @@ const store= compose(
 )(createStore)(allReducers);
 
 */
-
 
 export default store

@@ -19,6 +19,7 @@ const newProductReducer= (state=initalNewProduct, action) => {
       default:
         return state
     }
+    console.log(state);
 }
 
 export default newProductReducer

@@ -1,13 +1,11 @@
 //import logo from './logo.svg';
 //import './App.css';
-import Header from './screens/Header';
-import Result from './screens/Result';
+import FirstPage from './screens/pages/FirstPage';
 
 function App() {
   return (
     <div>
-      <Header/>
-      <Result/>
+      <FirstPage/>
     </div>
   );
 }

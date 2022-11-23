@@ -1,14 +1,10 @@
 import { all, fork, call, put, takeEvery } from 'redux-saga/effects'
 import { getJeweleryList, getElectronicsList, getMensClothingList, getWomensClothingList } from '../../service'
-import { getJeweleryRequest, getElectronicsRequest,getMenClothingRequest, getWomenClothingRequest } from './categorizedAction'
+import { setJeweleryRequest, setElectronicsRequest,setMenClothingRequest, setWomenClothingRequest } from './categorizedAction'
 
 function* fetchJewelery() {
-  try {
     const data = yield call(getJeweleryList)
-    yield put(getJeweleryRequest(data))
-  } catch (err) {
-    console.log('err', err)
-  }
+    yield put(setJeweleryRequest(data))
 }
 
 function* jewelerySaga() {
@@ -17,12 +13,9 @@ function* jewelerySaga() {
 
 
 function* fetchElectronics() {
-  try {
     const data = yield call(getElectronicsList)
-    yield put(getElectronicsRequest(data))
-  } catch (err) {
-    console.log('err', err)
-  }
+    yield put(setElectronicsRequest(data))
+  
 }
 
 function* electronicsSaga() {
@@ -31,12 +24,8 @@ function* electronicsSaga() {
 
 
 function* fetchMenClothing() {
-  try {
     const data = yield call(getMensClothingList)
-    yield put(getMenClothingRequest(data))
-  } catch (err) {
-    console.log('err', err)
-  }
+    yield put(setMenClothingRequest(data))
 }
 
 function* menSaga() {
@@ -45,12 +34,8 @@ function* menSaga() {
 
 
 function* fetchWomenClothing() {
-  try {
     const data = yield call(getWomensClothingList)
-    yield put(getWomenClothingRequest(data))
-  } catch (err) {
-    console.log('err', err)
-  }
+    yield put(setWomenClothingRequest(data))
 }
 
 function* womenSaga() {

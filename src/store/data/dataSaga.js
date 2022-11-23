@@ -3,12 +3,8 @@ import { getDataList } from '../../service'
 import { getDataRequestSuccess } from './dataAction'
 
 function* fetchData() {
-  try {
     const data = yield call(getDataList)
     yield put(getDataRequestSuccess(data))
-  } catch (err) {
-    console.log('err', err)
-  }
 }
 
 export default function* dataSaga() {

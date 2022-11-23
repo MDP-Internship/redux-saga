@@ -1,14 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { getCategoryList } from '../../service'
-import { getCategoryRequest } from './categoryAction'
+import { setCategoryRequest } from './categoryAction'
 
 function* fetchCategoryData() {
-  try {
     const data = yield call(getCategoryList)
-    yield put(getCategoryRequest(data))
-  } catch (err) {
-    console.log('err', err)
-  }
+    console.log(data)
+    yield put(setCategoryRequest(data))
 }
 
 export default function* categorySaga() {

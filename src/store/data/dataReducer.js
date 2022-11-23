@@ -1,5 +1,6 @@
 const initalData={
-  products:[]
+  products:[],
+  loading: false
 }
 
 const dataReducer=(state=initalData, action) => {

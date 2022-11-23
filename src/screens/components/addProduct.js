@@ -7,41 +7,46 @@ function AddProduct(){
     const [isFormShown, setIsFormShown]= useState(false);
 
     const [input, setInput]=useState(
-    [ {
+    {
         title: 'test product',
         price: 13.5,
         description: 'lorem ipsum set',
         image: 'https://i.pravatar.cc',
         category: 'electronic'
-    }
-    ]);
-
-    const sendDataDispatch=useDispatch();
-
-    const sendData=()=>{   
-        sendDataDispatch(addNewProductRequest(input[0]))  
-        console.log("helo");
-    }
-
+    });
 
     const formShow=()=>{     
         setIsFormShown(!isFormShown);
     }
 
+    const formData=(name)=>(event)=>{
+        setInput(p=>({...p, [name]:event.target.value}))
+        console.log(input);
+    }
+
+    const sendDataDispatch=useDispatch();    
+
+    const sendData=()=>{   
+        sendDataDispatch(addNewProductRequest(input))  
+        console.log("helo");
+    }
+
     return(
         <div class="header">
-            <button onClick={formShow}>"ADD NEW PRODUCT"</button>
+            <button onClick={formShow}>ADD NEW PRODUCT</button>
             {
                 isFormShown===true && (
                     <div>
-                        {input.map((element, index)=>(                          
-                            <div key={index}>
-                                <p>{element.title}</p>
-                                <p>{element.price}</p>
-                                <p>{element.description}</p>
-                                <p>{element.category}</p>
+                        <form>
+                            <div>
+                                <label for="title"> Title</label>
+                                <input type="text" id="title" name="title"  onChange={formData("title")}/>
+                            </div>    
+                            <div>
+                                <label for="price"> Price </label>
+                                <input type="text" id="price" name="price"  onChange={formData("price")}/>     
                             </div>
-                        ))}
+                        </form>
                         <button onClick={sendData}>SEND</button>
                     </div>
                 )

@@ -1,16 +1,24 @@
-import { call, put, takeEvery} from 'redux-saga/effects'
-import { getAdd } from '../../service'
+import { call, put, take} from 'redux-saga/effects'
+import { postAdd } from '../../service'
 import { addNewProductRequest } from './addAction'
 
-function* fetchNewProduct() {
-  try {
-    const newData = yield call(getAdd)
+function* fetchNewProduct(data) {
+    const newData = yield call(postAdd(data))
     yield put(addNewProductRequest(newData))
-  } catch (err) {
-    console.log('err', err)
-  }
 }
 
 export default function* addProductSaga() {
-  yield takeEvery('PUT_NEW_PRODUCT_REQUEST', fetchNewProduct)
+  while (true) {
+    const { payload } = yield take('PUT_NEW_PRODUCT_REQUEST');
+    // console.log(data.payload, 44)
+    yield call(fetchNewProduct, payload);
+  }
 }
+
+/*
+export default function* addProductSaga() {
+  const data= yield takeEvery('PUT_NEW_PRODUCT_REQUEST')
+  console.log(data, 22)
+}
+
+*/

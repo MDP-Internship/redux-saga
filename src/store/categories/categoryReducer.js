@@ -4,7 +4,7 @@ const initalCategory={
 
 const categoryReducer= (state=initalCategory, action) => {
     switch (action.type) {
-      case 'GET_CATEGORY_REQUEST':
+      case 'SET_CATEGORY_REQUEST':
         return {
           ...state,
           category: action.data
