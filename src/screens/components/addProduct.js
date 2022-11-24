@@ -1,6 +1,8 @@
 import { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { addNewProductRequest } from '../../store/addProduct/addAction'
+//import Button from '@mui/material/Button'
+import { Button } from '../../styles/button';
 
 function AddProduct(){
 
@@ -33,7 +35,7 @@ function AddProduct(){
 
     return(
         <div class="header">
-            <button class="button" onClick={formShow}>Add New Product</button>
+            <Button onClick={formShow}>Add New Product</Button>
             {
                 isFormShown===true && (
                     <div>
@@ -55,7 +57,7 @@ function AddProduct(){
                                 <input type="text" id="category" name="category"  onChange={formData("category")}/>     
                             </div>
                         </form>
-                        <button class="category" onClick={sendData}>SEND</button>
+                        <Button secondary onClick={sendData}>SEND</Button>
                     </div>
                 )
             }
@@ -65,3 +67,4 @@ function AddProduct(){
 }
 
 export default AddProduct;
+

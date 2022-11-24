@@ -1,6 +1,9 @@
 import { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getDataRequest } from '../../store/data/dataAction'
+//import Button from '@mui/material/Button'
+import { Button } from '../../styles/button';
+import Details from './product_detail'
 
 function ShowAll(){
 
@@ -17,9 +20,9 @@ function ShowAll(){
 
     return(
     <div class="header">      
-        <button class="button" onClick={() => {clickHandler()}}>
+        <Button onClick={() => {clickHandler()}}>
           Show all products
-        </button> 
+        </Button> 
 
         {
           (products?.loading && products?.length == 0) ? 
@@ -32,16 +35,7 @@ function ShowAll(){
                 <div key={product.id} class='productContainer' onClick={() => setIsDetailShown(product.id)} >
                     {product.title}
                     {isDetailShown === product.id && (
-                    <div class="horizontal"> 
-                        <div class="vertical">                            
-                            <div class="detail"> {"Price: "}<div class="lighter"> {product.price}</div> </div> 
-                            <div class="detail"> {"Rating:  "} <div class="lighter"> {product.rating.rate}</div></div>                            
-                            <div class="detail"> {"Category:  "} <div class="lighter"> {product.category}</div></div>
-                            <div class="detail"> {"Description:  "} <div class="lighter"> {product.description}</div></div> 
-                        </div>
-                        <div><img class="image" src={product.image}/></div>
-
-                    </div>
+                      <Details product={product} />
                     ) } 
                 </div>
                 ))}
