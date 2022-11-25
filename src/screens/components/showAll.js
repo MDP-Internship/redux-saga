@@ -1,31 +1,33 @@
 import { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { getDataRequest } from '../../store/data/dataAction'
-//import Button from '@mui/material/Button'
-import { Button } from '../../styles/button';
 import Details from './product_detail'
+import { CustomButton } from '../../constants/CustomButton.style'
+import { primary, secondary } from '../../constants/theme'
 
-function ShowAll(){
+function ShowAll({inBasket, setInBasket, ...props}){
 
     const dispatch = useDispatch()
     const [isDetailShown, setIsDetailShown]= useState(null);      
     const [isShown, setIsShown]= useState(false);   
+    const [flag, setFlag] = useState(true);  
 
     const clickHandler=()=>{
         dispatch(getDataRequest());
         setIsShown(!isShown);
+        setFlag(!flag);
     }
    
-    const products = useSelector((state) => state.data.products);  
+    const products = useSelector((state) => state.data.products);
 
     return(
     <div class="header">      
-        <Button onClick={() => {clickHandler()}}>
+        <CustomButton variant="outlined" textcolor={flag ?  primary :secondary} onClick={() => {clickHandler()}}>
           Show all products
-        </Button> 
+        </CustomButton> 
 
         {
-          (products?.loading && products?.length == 0) ? 
+          (products?.loading && products?.length === 0) ? 
           (<div>Loading</div>)
           :
           ((isShown===true)&&(
@@ -35,7 +37,9 @@ function ShowAll(){
                 <div key={product.id} class='productContainer' onClick={() => setIsDetailShown(product.id)} >
                     {product.title}
                     {isDetailShown === product.id && (
-                      <Details product={product} />
+                      <div>
+                        <Details product={product} inBasket={inBasket} setInBasket={setInBasket}/>
+                      </div>                                            
                     ) } 
                 </div>
                 ))}

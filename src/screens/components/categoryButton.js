@@ -3,16 +3,19 @@ import { useState} from 'react'
 import { getCategoryRequest } from '../../store/categories/categoryAction'
 import { getJeweleryRequest, getElectronicsRequest, getWomenClothingRequest, getMenClothingRequest } from '../../store/categorizedProduct/categorizedAction'
 import '../../styles/Main.css'
-//import Button from '@mui/material/Button'
-import { Button } from '../../styles/button';
-import { Detail } from '../../styles/style'
+import Button from '@mui/material/Button'
+//import { Button } from '../../styles/button';
 import Details from './product_detail'
+import { CustomButton } from '../../constants/CustomButton.style'
+import { primary, secondary } from '../../constants/theme'
+
 
 function Categories(){
 
     const [categoryShown, setCategoryShown]= useState(false);
-    const [isDetailShown, setIsDetailShown]= useState(null);   
-    //const [categorizedProducts, setcategorizedProducts]= useState([]);    
+    const [isDetailShown, setIsDetailShown]= useState(null);  
+    const [flag, setFlag] = useState(true);   
+    const [flag2, setFlag2] = useState(true);  
 
     const categoryDispatch=useDispatch();
     const categorizedProductDispatch= useDispatch();
@@ -20,6 +23,7 @@ function Categories(){
     const showCategory=()=>{     
         categoryDispatch(getCategoryRequest());
         setCategoryShown(!categoryShown);
+        setFlag(!flag);
         //categorizedProductDispatch(getJeweleryRequest());
     }
 
@@ -41,21 +45,23 @@ function Categories(){
         }
         else if(category==="women's clothing"){
             categorizedProductDispatch(getWomenClothingRequest());
-        }         
+        }
+        setFlag2(!flag2);         
     }
 
     const categorizedProducts = useSelector(state => { 
         return state.categorizedProduct.categorizedProducts
     })
 
-    console.log(categorizedProducts, 89)
+    console.log(categorizedProducts, 89)   
+   
 
     return(
         <div class="header">
-            <Button onClick={showCategory}>Categories</Button>                   
+            <CustomButton variant="outlined" textcolor={flag ?  primary :secondary} onClick={showCategory}>Categories</CustomButton>                   
             { categoryShown === true && (
               categories?.map((category)=>(
-                <Button secondary key={category} onClick={()=>{showCategorizedProducts(category)}}>{category}</Button>
+                <CustomButton variant="outlined" sx={{marginLeft:2}} key={category} onClick={()=>{showCategorizedProducts(category)}}>{category}</CustomButton>
               ))           
             ) 
             }
