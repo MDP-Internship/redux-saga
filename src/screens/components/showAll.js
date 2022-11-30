@@ -11,9 +11,14 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { CustomImageListItem } from '../../constants/CustomImageListItem.style';
 
 
 function ShowAll({inBasket, setInBasket, ...props}){
+
+    const addBasket=(id)=>{
+      setInBasket(oldArray => [...oldArray, id]);
+    }
 
     const dispatch = useDispatch()
     const [isDetailShown, setIsDetailShown]= useState(null);      
@@ -40,14 +45,15 @@ function ShowAll({inBasket, setInBasket, ...props}){
           :
           ((isShown===true)&&(
 
-            <div class="gridTile">
-            <ImageList sx={{ width: 1000, height: 430, '&::-webkit-scrollbar': {display: "none"} }} >
-              <ImageListItem key="Subheader" cols={3}>
+            <div >
+            <ImageList cols={3} sx={{ '&::-webkit-scrollbar': {display: "none"} }} >
+              <ImageListItem key="Subheader" >
                 <ListSubheader component="div"> </ListSubheader>
               </ImageListItem>
               {products.map((item) => (
-                <ImageListItem  sx={{ height: 100, width:300 }} key={item.image} onClick={() => setIsDetailShown(item.id)}>
+                <CustomImageListItem grid={ isDetailShown===item.id ? true:false} key={item.image} >
                   <img
+                    onClick={() => setIsDetailShown(item.id)}
                     src={`${item.image}?w=248&fit=crop&auto=format`}
                     srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
@@ -58,6 +64,7 @@ function ShowAll({inBasket, setInBasket, ...props}){
                     //subtitle={item.author}
                     actionIcon={
                       <IconButton
+                        onClick={()=>addBasket(item.id)}
                         sx={{ color: primary }}
                         aria-label={`info about ${item.title}`}
                       >
@@ -70,7 +77,7 @@ function ShowAll({inBasket, setInBasket, ...props}){
                         <Details product={item} inBasket={inBasket} setInBasket={setInBasket}/>
                       </div>                                            
                      ) }
-               </ImageListItem> 
+               </CustomImageListItem> 
               ))}
             </ImageList>
             </div>

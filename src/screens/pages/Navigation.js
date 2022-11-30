@@ -158,15 +158,3 @@ export default function PersistentDrawerLeft() {
     </Box>
   );
 }
-
-
-// {['ShowAll', 'Categories', 'AddProduct'].map((page, index) => (
-//     <ListItem key={page} disablePadding>
-//       <ListItemButton>
-//         <ListItemIcon>
-//           {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-//         </ListItemIcon>
-//         <Link to={`/${page}`} >{page}</Link>
-//       </ListItemButton>
-//     </ListItem>
-//   ))}
