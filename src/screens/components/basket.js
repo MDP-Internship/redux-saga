@@ -3,8 +3,9 @@ import { getDataRequest } from '../../store/data/dataAction'
 import '../../styles/Main.css'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import IconButton from '@mui/material/IconButton';
+import { Link } from 'react-router-dom';
 
-function Basket({inBasket, setInBasket, ...props}){
+function Basket({inBasket, setInBasket, ...props}){   
 
     const dispatch = useDispatch()
     dispatch(getDataRequest());
@@ -24,8 +25,8 @@ function Basket({inBasket, setInBasket, ...props}){
 
     return(
     <div class="header">      
-       {products.map((product)=>(
-        
+        {(inBasket.length===0) && <p>basket is empty, <Link to={`/Showall`}>keep Shopping</Link> </p> }
+        {products.map((product)=>(   
         (inBasket.includes(product.id)===true) && 
             <div class="productContainer"> 
                 {product.title}
@@ -34,7 +35,8 @@ function Basket({inBasket, setInBasket, ...props}){
                 <IconButton color="primary" aria-label="delete" onClick={()=>deleteProduct(product.id)}>
                   <DeleteTwoToneIcon />
                 </IconButton> 
-            </div>        
+            </div> 
+
         ))}
     </div>
     )

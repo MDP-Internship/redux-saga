@@ -21,22 +21,10 @@ function AddProduct(){
     const [flag, setFlag] = useState(true);  
 
     const currencies = [
-        {
-          value: 'jewelery',
-          label: 'jewelery',
-        },
-        {
-          value: 'electronic',
-          label: 'electronic',
-        },
-        {
-          value: "men's clothing",
-          label: "men's clothing",
-        },
-        {
-          value: "women's clothing",
-          label: "women's clothing",
-        },
+        {  value: 'jewelery'  },
+        {  value: 'electronic' },
+        {  value: "men's clothing" },
+        {  value: "women's clothing" },
     ];
 
     const [input, setInput]=useState(
@@ -68,7 +56,7 @@ function AddProduct(){
     }
 
     return(
-        <div>
+        <div class="header">
             <CustomButton variant="outlined" textcolor={flag ?  primary :secondary} onClick={formShow}>Add New Product</CustomButton>
             {
                 isFormShown===true && (
@@ -96,7 +84,7 @@ function AddProduct(){
                                     >
                                       {currencies.map((option) => (
                                         <MenuItem key={option.value} value={option.value}>
-                                          {option.label}
+                                          {option.value}
                                         </MenuItem>
                                       ))}
                                     </ValidationTextField>

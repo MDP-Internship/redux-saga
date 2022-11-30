@@ -3,14 +3,14 @@ import { useState} from 'react'
 import { getCategoryRequest } from '../../store/categories/categoryAction'
 import { getJeweleryRequest, getElectronicsRequest, getWomenClothingRequest, getMenClothingRequest } from '../../store/categorizedProduct/categorizedAction'
 import '../../styles/Main.css'
-import Button from '@mui/material/Button'
+//import Button from '@mui/material/Button'
 //import { Button } from '../../styles/button';
 import Details from './product_detail'
 import { CustomButton } from '../../constants/CustomButton.style'
 import { primary, secondary } from '../../constants/theme'
 
 
-function Categories(){
+function Categories({inBasket, setInBasket, ...props}){
 
     const [categoryShown, setCategoryShown]= useState(false);
     const [isDetailShown, setIsDetailShown]= useState(null);  
@@ -72,7 +72,7 @@ function Categories(){
                         <div key={product.id} class='productContainer' onClick={() => setIsDetailShown(product.id)}>
                             {product.title}
                             {isDetailShown === product.id && (
-                                <Details product={product} />
+                                <Details product={product} inBasket={inBasket} setInBasket={setInBasket} />
                             )} 
                         </div>
                     </div>

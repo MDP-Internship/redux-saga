@@ -35,4 +35,7 @@
     margin-left: 10px;
 }
 
-
+.gridTile{
+    margin-left: 130px;
+    justify-content: center;
+}
