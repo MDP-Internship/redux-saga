@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 
 function Basket({inBasket, setInBasket, ...props}){   
 
-    const dispatch = useDispatch()
-    dispatch(getDataRequest());
     const products = useSelector((state) => state.data.products);
 
     function getOccurrence(array, value) {
@@ -28,7 +26,7 @@ function Basket({inBasket, setInBasket, ...props}){
         {(inBasket.length===0) && <p>basket is empty, <Link to={`/Showall`}>keep Shopping</Link> </p> }
         {products.map((product)=>(   
         (inBasket.includes(product.id)===true) && 
-            <div class="productContainer"> 
+            <div class="productContainer" key={product.id}> 
                 {product.title}
                 <div>{"Pieces: " + getOccurrence(inBasket, product.id)}</div>
                 <div>{"Price: " + product.price*getOccurrence(inBasket, product.id)}</div>

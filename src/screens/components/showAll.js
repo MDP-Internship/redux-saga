@@ -12,6 +12,7 @@ import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { CustomImageListItem } from '../../constants/CustomImageListItem.style';
+import List from './List';
 
 
 function ShowAll({inBasket, setInBasket, ...props}){
@@ -44,59 +45,7 @@ function ShowAll({inBasket, setInBasket, ...props}){
           (<div>Loading</div>)
           :
           ((isShown===true)&&(
-
-            <div >
-            <ImageList cols={3} sx={{ '&::-webkit-scrollbar': {display: "none"} }} >
-              <ImageListItem key="Subheader" >
-                <ListSubheader component="div"> </ListSubheader>
-              </ImageListItem>
-              {products.map((item) => (
-                <CustomImageListItem grid={ isDetailShown===item.id ? true:false} key={item.image} >
-                  <img
-                    onClick={() => setIsDetailShown(item.id)}
-                    src={`${item.image}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-                  <ImageListItemBar
-                    title={item.title}
-                    //subtitle={item.author}
-                    actionIcon={
-                      <IconButton
-                        onClick={()=>addBasket(item.id)}
-                        sx={{ color: primary }}
-                        aria-label={`info about ${item.title}`}
-                      >
-                        <AddShoppingCartIcon />
-                      </IconButton>
-                    }
-                  />
-                   {isDetailShown === item.id && (
-                      <div>
-                        <Details product={item} inBasket={inBasket} setInBasket={setInBasket}/>
-                      </div>                                            
-                     ) }
-               </CustomImageListItem> 
-              ))}
-            </ImageList>
-            </div>
-
-
-            // <div>
-            //   <div>
-            //     {products.map((product)=>(
-            //     <div key={product.id} class='productContainer' onClick={() => setIsDetailShown(product.id)} >
-            //         {product.title}
-            //         {isDetailShown === product.id && (
-            //           <div>
-            //             <Details product={product} inBasket={inBasket} setInBasket={setInBasket}/>
-            //           </div>                                            
-            //         ) } 
-            //     </div>
-            //     ))}
-            //   </div>
-            // </div>
+            <List products={products} inBasket={inBasket} setInBasket={setInBasket} />
           ))
         }       
     </div>

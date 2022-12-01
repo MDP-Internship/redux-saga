@@ -8,6 +8,7 @@ import '../../styles/Main.css'
 import Details from './product_detail'
 import { CustomButton } from '../../constants/CustomButton.style'
 import { primary, secondary } from '../../constants/theme'
+import List from './List'
 
 
 function Categories({inBasket, setInBasket, ...props}){
@@ -67,16 +68,10 @@ function Categories({inBasket, setInBasket, ...props}){
             }
 
             {   categorizedProducts?.length>0 && categoryShown === true &&(
-                categorizedProducts.map((product)=>(
                     <div>
-                        <div key={product.id} class='productContainer' onClick={() => setIsDetailShown(product.id)}>
-                            {product.title}
-                            {isDetailShown === product.id && (
-                                <Details product={product} inBasket={inBasket} setInBasket={setInBasket} />
-                            )} 
-                        </div>
+                        <List products={categorizedProducts} inBasket={inBasket} setInBasket={setInBasket} />
                     </div>
-                ))
+                
                 )
             }
         </div>

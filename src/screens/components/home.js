@@ -1,7 +1,10 @@
+import gif from '../../constants/images/giphy.gif'
+
 function Home(){
     return(
     <div class="header">      
-        <p>welcome to store</p>
+        <p>WELCOME TO STORE</p>
+        <img src={gif} alt="shop" />
     </div>
     )
 

@@ -14,13 +14,16 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText  from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import CategoryIcon from '@mui/icons-material/Category';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ShoppingBasketTwoToneIcon from '@mui/icons-material/ShoppingBasketTwoTone';
 import HomeIcon from '@mui/icons-material/Home';
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
+import { primary, secondary } from '../../constants/theme'
+import '../../styles/Main.css'
 
 const drawerWidth = 240;
 
@@ -100,6 +103,7 @@ export default function PersistentDrawerLeft() {
           </Typography>
         </Toolbar>
       </AppBar>
+
       <Drawer
         sx={{
           width: drawerWidth,
@@ -118,43 +122,63 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />       
+
+        <Divider />  
+
         <List>
-        <ListItem disablePadding>
+
+        <NavLink to={`/`} style={{ textDecoration: 'none' }}>
+          <ListItem disablePadding>              
             <ListItemButton>
-                <ListItemIcon>  <HomeIcon /> </ListItemIcon>
-                <Link to={`/`} >Home</Link>
-            </ListItemButton>            
-        </ListItem>
-        <ListItem disablePadding>
-            <ListItemButton>
-                <ListItemIcon>  <DiamondIcon /> </ListItemIcon>
-                <Link to={`/Showall`} >Show All Products</Link>
-            </ListItemButton>            
-        </ListItem>
-        <ListItem disablePadding>
-            <ListItemButton>
-                <ListItemIcon>  <CategoryIcon /> </ListItemIcon>
-                <Link to={`/Categories`} >Show Categories</Link>
-            </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-            <ListItemButton>
-                <ListItemIcon>  <AddCircleOutlineIcon/> </ListItemIcon>
-                <Link to={`/AddProduct`} >Add Product</Link>
-            </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-            <ListItemButton>
-                <ListItemIcon>  <ShoppingBasketTwoToneIcon/> </ListItemIcon>
-                <Link to={`/Basket`} >Shopping Cart</Link>
-            </ListItemButton>
-        </ListItem>
+              <ListItemIcon sx={{ color: primary }}>  <HomeIcon  /> </ListItemIcon>
+              <ListItemText sx={{ color: secondary }}>Home</ListItemText>
+            </ListItemButton>                  
+          </ListItem>
+        </NavLink> 
+        
+        <NavLink to={`/Showall`} style={{ textDecoration: 'none' }}>
+          <ListItem disablePadding>
+              <ListItemButton>
+                  <ListItemIcon sx={{ color: primary }}>  <DiamondIcon /> </ListItemIcon>                  
+                  <ListItemText sx={{ color: secondary }}>Show All Products</ListItemText>
+              </ListItemButton>            
+          </ListItem>
+        </NavLink>
+        
+        <NavLink to={`/Categories`} style={{ textDecoration: 'none' }}>
+          <ListItem disablePadding>
+              <ListItemButton>
+                  <ListItemIcon sx={{ color: primary }}>  <CategoryIcon /> </ListItemIcon>
+                  <ListItemText sx={{ color: secondary }}>Show Categories</ListItemText>
+              </ListItemButton>
+          </ListItem>
+        </NavLink>
+
+        <NavLink to={`/AddProduct`} style={{ textDecoration: 'none' }}>
+          <ListItem disablePadding>
+              <ListItemButton>
+                  <ListItemIcon sx={{ color: primary }}>  <AddCircleOutlineIcon/> </ListItemIcon>
+                  <ListItemText sx={{ color: secondary }}>Add Product</ListItemText>
+              </ListItemButton>
+          </ListItem>
+        </NavLink>
+
+        <NavLink to={`/ShoppingBasket`} style={{ textDecoration: 'none' }}>
+          <ListItem disablePadding>
+              <ListItemButton>
+                  <ListItemIcon sx={{ color: primary }}>  <ShoppingBasketTwoToneIcon/> </ListItemIcon>
+                  <ListItemText sx={{ color: secondary }}>Shopping Cart</ListItemText>
+              </ListItemButton>              
+          </ListItem>
+        </NavLink>
+
         </List>
       </Drawer>
+
       <Main open={open}>
         <DrawerHeader />      
       </Main>
+
     </Box>
   );
 }

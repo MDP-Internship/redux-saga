@@ -19,7 +19,7 @@ function SecondPage() {
             <Route path="ShowAll" element={<ShowAll inBasket={inBasket} setInBasket={setInBasket}/>}/>
             <Route path="Categories" element={<Categories inBasket={inBasket} setInBasket={setInBasket}/>}/>
             <Route path="AddProduct" element={<AddProduct/>}/>  
-            <Route path="Basket" element={<Basket inBasket={inBasket} setInBasket={setInBasket}/>}/>        
+            <Route path="ShoppingBasket" element={<Basket inBasket={inBasket} setInBasket={setInBasket}/>}/>        
         </Routes>
     </div>
   );
