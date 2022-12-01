@@ -1,3 +1,5 @@
+//not being used anymore
+
 export const getDataRequest = () => ({
   type: 'GET_DATA_REQUEST'
 })

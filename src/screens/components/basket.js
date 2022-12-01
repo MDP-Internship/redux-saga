@@ -26,10 +26,14 @@ function Basket({inBasket, setInBasket, ...props}){
         {(inBasket.length===0) && <p>basket is empty, <Link to={`/Showall`}>keep Shopping</Link> </p> }
         {products.map((product)=>(   
         (inBasket.includes(product.id)===true) && 
-            <div class="productContainer" key={product.id}> 
-                {product.title}
-                <div>{"Pieces: " + getOccurrence(inBasket, product.id)}</div>
-                <div>{"Price: " + product.price*getOccurrence(inBasket, product.id)}</div>
+            <div class="detailContainer" key={product.id}>                 
+                <div><img class="image1" src={product.image}/></div>
+                <div>
+                    {product.title}
+                    <div>{"Pieces: " + getOccurrence(inBasket, product.id)}</div>
+                    <div>{"Price: " + product.price*getOccurrence(inBasket, product.id)}</div>
+                </div>
+                
                 <IconButton color="primary" aria-label="delete" onClick={()=>deleteProduct(product.id)}>
                   <DeleteTwoToneIcon />
                 </IconButton> 

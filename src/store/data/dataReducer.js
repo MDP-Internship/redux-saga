@@ -1,3 +1,5 @@
+//not being used anymore
+
 const initalData={
   products:[],
   loading: false
