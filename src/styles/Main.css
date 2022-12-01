@@ -54,3 +54,17 @@
 .active{
     background-color:#1f4120;
 }
+
+.basketButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+    margin-right: 70px;
+}
+
+.button{
+    display: flex;
+    flex: 1;
+    justify-content:flex-end;
+}
