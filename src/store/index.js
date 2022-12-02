@@ -1,36 +1,31 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { configureStore} from '@reduxjs/toolkit'
+//import { createStore, applyMiddleware, compose } from 'redux'
+import { configureStore, applyMiddleware} from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
-import allReducers from './reducers'
+import {logger} from 'redux-logger'
+
 import dataSaga from './data/dataSaga'
 import categorySaga from './categories/categorySaga'
 import categorizedSaga from './categorizedProduct/categorizedSaga'
 import addSaga from "./addProduct/addSaga"
 
-import  dataSlicer  from './data/dataSlice'
-import dataReducer from './data/dataReducer'
-import categoryReducer from './categories/categoryReducer'
-import categorizedProductReducer from './categorizedProduct/categorizedReducer'
-import newProductReducer from './addProduct/addReducer'
+import allReducers from './reducers'
 
 const dataSagaMiddleware = createSagaMiddleware()
 const categorySagaMiddleware = createSagaMiddleware()
 const categorizedProductSagaMiddleware = createSagaMiddleware()
 const addSagaMiddleware = createSagaMiddleware()
 
-// let middlewares = applyMiddleware(dataSagaMiddleware,categorySagaMiddleware, categorizedProductSagaMiddleware, addSagaMiddleware);
+//const middlewares = applyMiddleware(dataSagaMiddleware,categorySagaMiddleware, categorizedProductSagaMiddleware, addSagaMiddleware);
 
-// const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
+//const composeEnhancers =  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+//window.REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 // const enhancer = composeEnhancers(middlewares);
 
+const middlewares = [dataSagaMiddleware,categorySagaMiddleware, categorizedProductSagaMiddleware, addSagaMiddleware]
+
 const store = configureStore({
-  reducer: {
-    data: dataSlicer,
-    category: categoryReducer,
-    categorizedProduct: categorizedProductReducer,
-    newProductReducer: newProductReducer
-  },
-  middleware: [dataSagaMiddleware,categorySagaMiddleware, categorizedProductSagaMiddleware, addSagaMiddleware]
+  reducer: allReducers,
+  middleware: middlewares,
 })
 
 //console.log(store.getState(), 2222);

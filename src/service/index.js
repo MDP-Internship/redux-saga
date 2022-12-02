@@ -1,5 +1,6 @@
 //import {createAsyncThunk} from '@reduxjs/toolkit'
-//import axios from 'axios'
+
+import axios from "axios"
 
 export async function getDataList() {
   const response = await fetch(
@@ -25,12 +26,10 @@ men's clothing
 women's clothing*/
 
 export async function getJeweleryList() {
-  const response = await fetch(
-    'https://fakestoreapi.com/products/category/jewelery'
-  )
-  const result = await response.json()
+  const response = await axios.get('https://fakestoreapi.com/products/category/jewelery');
+  //const result = await response.json()
   //console.log(result)
-  return result
+  return response.data
 }
 
 
@@ -60,6 +59,7 @@ export async function getWomensClothingList() {
 }
 
 //addProduct
+//? argument of type {context, fn} has undefined or null `fn`      despite of a warning, post is succesful??
 
 export async function postAdd(data) {
   console.log(data, 45)

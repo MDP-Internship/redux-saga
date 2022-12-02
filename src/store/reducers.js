@@ -3,9 +3,10 @@ import dataReducer from './data/dataReducer'
 import categoryReducer from './categories/categoryReducer'
 import categorizedProductReducer from './categorizedProduct/categorizedReducer'
 import newProductReducer from './addProduct/addReducer'
+import dataSlicer from './data/dataSlice'
 
 const allReducers = combineReducers({
-    data: dataReducer,
+    data: dataSlicer,
     category: categoryReducer,
     categorizedProduct: categorizedProductReducer,
     newProductReducer: newProductReducer

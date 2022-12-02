@@ -31,10 +31,13 @@ function Basket({inBasket, setInBasket, ...props}){
     }
 
     const removeProduct=(id)=>{
-        let index = inBasket.indexOf(id);
-        if (index > -1) {
-            setInBasket(inBasket.splice(index, 1));
-        }       
+        //! neden basket güncellenmiyor!!!!!!!
+        let index = inBasket.lastIndexOf(id);
+        console.log(inBasket);
+        inBasket.splice(index, 1);
+        console.log(inBasket)
+        setInBasket(inBasket);
+        console.log(inBasket)            
     }
 
     return(
