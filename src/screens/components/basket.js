@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 //import { getDataRequest } from '../../store/data/dataAction'
 import '../../styles/Main.css'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
@@ -26,12 +26,9 @@ function Basket({inBasket, setInBasket, ...props}){
 
     const removeProduct=(id)=>{
         let index = inBasket.lastIndexOf(id);
-        const copyArray= inBasket;
-        console.log(copyArray);
+        const copyArray= [...inBasket];
         copyArray.splice(index, 1);
-        console.log(copyArray)
-        setInBasket(copyArray);
-        console.log(inBasket)            
+        setInBasket(copyArray);     
     }
 
     function getOccurrence(array, value) {
@@ -50,7 +47,7 @@ function Basket({inBasket, setInBasket, ...props}){
                 <div>
                     {product.title}
                     <div>{"Pieces: " + getOccurrence(inBasket, product.id)}</div>
-                    <div>{"Price: " + product.price*getOccurrence(inBasket, product.id)}</div>
+                    <div>{"Price: " + (product.price*getOccurrence(inBasket, product.id)).toFixed(2) }</div>
                 </div>
 
                 <div className='basketButton'>
