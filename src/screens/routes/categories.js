@@ -5,16 +5,14 @@ import { getJeweleryRequest, getElectronicsRequest, getWomenClothingRequest, get
 import '../../styles/Main.css'
 //import Button from '@mui/material/Button'
 //import { Button } from '../../styles/button';
-import Details from './product_detail'
-import { CustomButton } from '../../constants/CustomButton.style'
+import { CustomButton } from '../../components/list/style/CustomButton.style'
 import { primary, secondary } from '../../constants/theme'
-import List from './List'
+import List from '../../components/list/List'
 
 
 function Categories({inBasket, setInBasket, ...props}){
 
-    const [categoryShown, setCategoryShown]= useState(false);
-    const [isDetailShown, setIsDetailShown]= useState(null);  
+    const [categoryShown, setCategoryShown]= useState(false); 
     const [flag, setFlag] = useState(true);   
     const [flag2, setFlag2] = useState(true);  
 

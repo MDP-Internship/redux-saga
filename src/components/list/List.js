@@ -1,11 +1,11 @@
 import { useState} from 'react';
-import Details from './product_detail'
+import Details from '../product_detail'
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { CustomImageListItem } from '../../constants/CustomImageListItem.style';
+import { CustomImageListItem } from '../list/style/CustomImageListItem.style';
 
 
 function List({products, inBasket, setInBasket, ...props}){

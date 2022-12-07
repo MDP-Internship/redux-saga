@@ -1,4 +1,4 @@
-import gif from '../../constants/images/giphy.gif'
+import gif from '../../assets/gifs/giphy.gif'
 
 function Home(){
     return(

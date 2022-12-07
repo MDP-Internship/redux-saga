@@ -2,9 +2,9 @@ import { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 //import { getDataRequest } from '../../store/data/dataAction'
 import { getDataRequest } from '../../store/data/dataSlice';
-import { CustomButton } from '../../constants/CustomButton.style'
+import { CustomButton } from '../../components/list/style/CustomButton.style'
 import { primary, secondary } from '../../constants/theme'
-import List from './List';
+import List from '../../components/list/List'
 
 
 function ShowAll({inBasket, setInBasket, ...props}){

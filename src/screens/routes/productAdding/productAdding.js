@@ -1,16 +1,13 @@
 import { useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { addNewProductRequest } from '../../store/addProduct/addAction'
-//import Button from '@mui/material/Button'
-//import { Button } from '../../styles/button';
+import {  useDispatch } from 'react-redux'
+import { addNewProductRequest } from '../../../store/addProduct/addAction'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import ValidationTextField from '../../styles/form_style'
-//import TextField from '@mui/material/TextField';
+import ValidationTextField from './styles/TextField.style'
 import MenuItem from '@mui/material/MenuItem';
-import { CustomButton } from '../../constants/CustomButton.style'
+import { CustomButton } from '../../../components/list/style/CustomButton.style'
 import FormControl from '@mui/material/FormControl';
-import { primary, secondary } from '../../constants/theme'
+import { primary, secondary } from '../../../constants/theme'
 import Stack  from '@mui/material/Stack';
 
 function AddProduct(){

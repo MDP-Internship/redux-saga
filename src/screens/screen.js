@@ -1,13 +1,13 @@
-import ShowAll from '../components/showAll';
-import Categories from '../components/categoryButton';
-import AddProduct from '../components/addProduct';
-import Home from '../components/home';
-import Basket from '../components/basket';
+import ShowAll from '../screens/routes/showAll';
+import Categories from '../screens/routes/categories';
+import AddProduct from '../screens/routes/productAdding/productAdding';
+import Home from '../screens/routes/home';
+import Basket from '../screens/routes/basket';
 import { Routes, Route } from 'react-router-dom';
-import ResponsiveDrawer from './Navigation';
+import ResponsiveDrawer from './drawer/drawer';
 import { useState } from 'react';
 
-function SecondPage() {
+function Screen() {
     const [inBasket, setInBasket]=useState([]);
     console.log(inBasket);
 
@@ -25,4 +25,4 @@ function SecondPage() {
   );
 }
 
-export default SecondPage;
+export default Screen;

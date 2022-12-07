@@ -1,5 +1,5 @@
 //import { createStore, applyMiddleware, compose } from 'redux'
-import { configureStore, applyMiddleware, createStore} from '@reduxjs/toolkit'
+import { configureStore} from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
 //import {logger} from 'redux-logger'
 //import { composeWithDevTools } from '@redux-devtools/extension';
@@ -28,15 +28,6 @@ const store = configureStore({
   reducer: allReducers,
   middleware: middlewares,
 })
-
-// const store = createStore(
-//   allReducers,
-//   composeWithDevTools(
-//     applyMiddleware(middlewares)
-//   )
-// );
-
-//console.log(store.getState(), 2222);
 
 dataSagaMiddleware.run(dataSaga)
 categorySagaMiddleware.run(categorySaga)
