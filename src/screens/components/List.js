@@ -16,6 +16,10 @@ function List({products, inBasket, setInBasket, ...props}){
     
     const [isDetailShown, setIsDetailShown]= useState(null);  
 
+    const shown=(id)=>{
+      setIsDetailShown(isDetailShown===id ? -1:id);
+    }
+
     return(
 
     <div >
@@ -24,7 +28,7 @@ function List({products, inBasket, setInBasket, ...props}){
             <CustomImageListItem grid={ isDetailShown===item.id ? true:false} key={item.image}>
               <img
                 className="image"
-                onClick={() => setIsDetailShown(item.id)}
+                onClick={() => shown(item.id)}
                 src={`${item.image}?w=248&fit=crop&auto=format`}
                 srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 alt={item.title}

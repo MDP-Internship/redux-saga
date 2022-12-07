@@ -15,7 +15,7 @@ function Details({product}){
             <div class="detail"> 
                 {/* <div><img class="image" src={product.image}/></div> */}
                 <div class="vertical">                            
-                    <div class="detail"> {"Price: "}<Detail> {product.price}</Detail> </div> 
+                    <div class="detail"> {"Price: "}<Detail> {product.price}</Detail> {"$"}</div> 
                     <div class="detail"> {"Rating:  "} <Detail> {product.rating.rate}</Detail></div>                            
                     <div class="detail"> {"Category:  "} <Detail> {product.category}</Detail></div>
                     <div class="detail"> {"Description:  "} <Detail> {product.description}</Detail></div>

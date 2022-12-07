@@ -7,3 +7,9 @@ export const CustomButton = styled(Button)`
     margin-top:10px
     
 `;
+
+/* 
+  export const Button = styled.button`
+  background-color: ${props => (props.disabled ? '#DDD' : 'green')};
+`; 
+*/

@@ -16,6 +16,6 @@ export const CustomImageListItem = styled(ImageListItem)`
             width:300px;
             height:300px;
         }
-        ` 
+    ` 
     )}
 `;

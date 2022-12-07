@@ -98,9 +98,9 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Store
-          </Typography>
+            <Typography variant="h6" noWrap component="div">
+              Store
+            </Typography>
         </Toolbar>
       </AppBar>
 

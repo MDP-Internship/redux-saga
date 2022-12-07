@@ -1,24 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { getDataRequest } from '../../store/data/dataAction'
+//import { getDataRequest } from '../../store/data/dataAction'
 import '../../styles/Main.css'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import IconButton from '@mui/material/IconButton';
 import { Link } from 'react-router-dom';
-import {secondary} from '../../constants/theme'
 
 function Basket({inBasket, setInBasket, ...props}){   
 
     const a = useSelector((state) => state.data.products);
     const b = useSelector((state=>state.categorizedProduct.categorizedProducts))
     const products = a.length>0 ? a:b;
-
-    function getOccurrence(array, value) {
-        var count = 0;
-        array.forEach((v) => (v === value && count++));
-        return count;
-    }
+    
 
     const deleteProduct=(id)=>{
         setInBasket(inBasket.filter(function(item) {
@@ -31,18 +25,24 @@ function Basket({inBasket, setInBasket, ...props}){
     }
 
     const removeProduct=(id)=>{
-        //! neden basket güncellenmiyor!!!!!!!
         let index = inBasket.lastIndexOf(id);
-        console.log(inBasket);
-        inBasket.splice(index, 1);
-        console.log(inBasket)
-        setInBasket(inBasket);
+        const copyArray= inBasket;
+        console.log(copyArray);
+        copyArray.splice(index, 1);
+        console.log(copyArray)
+        setInBasket(copyArray);
         console.log(inBasket)            
+    }
+
+    function getOccurrence(array, value) {
+        var count = 0;
+        array.forEach((v) => (v === value && count++));
+        return count;
     }
 
     return(
     <div class="header">      
-        {(inBasket.length===0) && <p>basket is empty, <Link to={`/Showall`}>keep Shopping</Link> </p> }
+        {(inBasket.length===0) && <p>Basket is empty, <Link to={`/Showall`}>keep Shopping</Link> </p> }
         {products.map((product)=>(   
         (inBasket.includes(product.id)===true) && 
             <div class="detailContainer" key={product.id}>                 
