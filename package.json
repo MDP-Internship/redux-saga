@@ -25,7 +25,8 @@
     "redux-saga": "^1.2.1",
     "redux-saga-effects": "^1.1.0",
     "redux-thunk": "^2.4.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-router-dom": "^6.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,6 +53,6 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^6.4.3"
+    
   }
 }

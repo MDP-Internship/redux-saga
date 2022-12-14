@@ -6,14 +6,11 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { CustomImageListItem } from '../list/style/CustomImageListItem.style';
+import { addProduct} from '../../store/basket/basketSlice';
+import { useDispatch } from 'react-redux';
 
-
-function List({products, inBasket, setInBasket, ...props}){
-
-    const addBasket=(id)=>{
-      setInBasket(oldArray => [...oldArray, id]);
-    }
-    
+function List( {products}){
+const dispatch = useDispatch()
     const [isDetailShown, setIsDetailShown]= useState(null);  
 
     const shown=(id)=>{
@@ -39,7 +36,7 @@ function List({products, inBasket, setInBasket, ...props}){
                 //subtitle={item.author}
                 actionIcon={
                   <IconButton
-                    onClick={()=>addBasket(item.id)}
+                    onClick={()=>dispatch(addProduct(item))}
                     sx={{ color: "#64dd17" }}
                     aria-label={`info about ${item.title}`}
                   >

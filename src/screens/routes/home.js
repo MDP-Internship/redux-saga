@@ -2,7 +2,7 @@ import gif from '../../assets/gifs/giphy.gif'
 
 function Home(){
     return(
-    <div class="header">      
+    <div className="header">      
         <p>WELCOME TO STORE</p>
         <img src={gif} alt="shop" />
     </div>

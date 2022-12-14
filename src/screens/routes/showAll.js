@@ -2,12 +2,11 @@ import { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 //import { getDataRequest } from '../../store/data/dataAction'
 import { getDataRequest } from '../../store/data/dataSlice';
-import { CustomButton } from '../../components/list/style/CustomButton.style'
+import { CustomButton } from '../../components/CustomButton.style'
 import { primary, secondary } from '../../constants/theme'
 import List from '../../components/list/List'
 
-
-function ShowAll({inBasket, setInBasket, ...props}){
+function ShowAll(){
 
     const dispatch = useDispatch()     
     const [isShown, setIsShown]= useState(false);   
@@ -20,11 +19,11 @@ function ShowAll({inBasket, setInBasket, ...props}){
     }
    
     const products = useSelector((state) => state.data.products);
-    const state = useSelector((state) => state);
-    console.log(state);
+    //const state = useSelector((state) => state);
+    //console.log(state);
 
     return(
-    <div class="header">      
+    <div className="header">      
         <CustomButton variant="outlined" textcolor={flag ?  primary :secondary} onClick={() => {clickHandler()}}>
           Show all products
         </CustomButton> 
@@ -34,7 +33,7 @@ function ShowAll({inBasket, setInBasket, ...props}){
           (<div>Loading</div>)
           :
           ((isShown===true)&&(
-            <List products={products} inBasket={inBasket} setInBasket={setInBasket} />
+            <List products={products} />
           ))
         }       
     </div>

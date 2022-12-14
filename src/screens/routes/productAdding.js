@@ -1,13 +1,13 @@
 import { useState} from 'react';
 import {  useDispatch } from 'react-redux'
-import { addNewProductRequest } from '../../../store/addProduct/addAction'
+import { addNewProductRequest } from '../../store/addProduct/addAction'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import ValidationTextField from './styles/TextField.style'
+import ValidationTextField from './style/TextField.style'
 import MenuItem from '@mui/material/MenuItem';
-import { CustomButton } from '../../../components/list/style/CustomButton.style'
+import { CustomButton } from '../../components/CustomButton.style'
 import FormControl from '@mui/material/FormControl';
-import { primary, secondary } from '../../../constants/theme'
+import { primary, secondary } from '../../constants/theme'
 import Stack  from '@mui/material/Stack';
 
 function AddProduct(){
@@ -41,7 +41,6 @@ function AddProduct(){
 
     const formData=(name)=>(event)=>{
         setInput(p=>({...p, [name]:event.target.value}))
-        console.log(input);
     }
 
     const sendDataDispatch=useDispatch();    
@@ -53,7 +52,7 @@ function AddProduct(){
     }
 
     return(
-        <div class="header">
+        <div className="header">
             <CustomButton variant="outlined" textcolor={flag ?  primary :secondary} onClick={formShow}>Add New Product</CustomButton>
             {
                 isFormShown===true && (
@@ -77,6 +76,7 @@ function AddProduct(){
                                       margin='normal'
                                       select
                                       label="Category"
+                                      defaultValue = ""
                                       onChange={formData("category")}
                                     >
                                       {currencies.map((option) => (
@@ -91,9 +91,9 @@ function AddProduct(){
                         </Box> 
                         <Stack direction="row" sx={{justifyContent:"center"}}>
                           <CustomButton disabled={isDisabled} variant="outlined" onClick={sendData}>SEND</CustomButton>
-                            {
-                              isMessageShown && <Grid sx={{marginTop:2, marginLeft:5}}>{"New product has send!"}</Grid>
-                            }
+                          {
+                            isMessageShown && <Grid sx={{marginTop:2, marginLeft:5}}>{"New product has send!"}</Grid>
+                          }
                         </Stack>
 
                         

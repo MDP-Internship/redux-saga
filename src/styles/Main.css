@@ -33,8 +33,7 @@
 .detailContainer{
     display: flex;
     flex-direction:row;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin: 10px;
     border-width: 2px;
     border-color:#1f4120;
     border-style: solid;

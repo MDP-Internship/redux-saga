@@ -1,6 +1,6 @@
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
-import { Colors } from '../../../../constants/theme';
+import { Colors } from '../../../constants/theme';
 
 const ValidationTextField = styled(TextField)({
     '& input:valid + fieldset': {

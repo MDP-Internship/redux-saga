@@ -5,12 +5,12 @@ import { getJeweleryRequest, getElectronicsRequest, getWomenClothingRequest, get
 import '../../styles/Main.css'
 //import Button from '@mui/material/Button'
 //import { Button } from '../../styles/button';
-import { CustomButton } from '../../components/list/style/CustomButton.style'
+import { CustomButton } from '../../components/CustomButton.style'
 import { primary, secondary } from '../../constants/theme'
 import List from '../../components/list/List'
 
 
-function Categories({inBasket, setInBasket, ...props}){
+function Categories(){
 
     const [categoryShown, setCategoryShown]= useState(false); 
     const [flag, setFlag] = useState(true);   
@@ -23,14 +23,13 @@ function Categories({inBasket, setInBasket, ...props}){
         categoryDispatch(getCategoryRequest());
         setCategoryShown(!categoryShown);
         setFlag(!flag);
-        //categorizedProductDispatch(getJeweleryRequest());
     }
 
     const categories = useSelector(state => { 
       return state.category.category
     })
     
-    console.log(categories);
+    //console.log(categories);
 
     const showCategorizedProducts=(category)=>{
         if(category==='jewelery'){
@@ -52,11 +51,8 @@ function Categories({inBasket, setInBasket, ...props}){
         return state.categorizedProduct.categorizedProducts
     })
 
-    console.log(categorizedProducts, 89)   
-   
-
     return(
-        <div class="header">
+        <div className="header">
             <CustomButton variant="outlined" textcolor={flag ?  primary :secondary} onClick={showCategory}>Categories</CustomButton>                   
             { categoryShown === true && (
               categories?.map((category)=>(
@@ -67,7 +63,7 @@ function Categories({inBasket, setInBasket, ...props}){
 
             {   categorizedProducts?.length>0 && categoryShown === true &&(
                     <div>
-                        <List products={categorizedProducts} inBasket={inBasket} setInBasket={setInBasket} />
+                        <List products={categorizedProducts} />
                     </div>
                 
                 )

@@ -87,7 +87,7 @@ export default function PersistentDrawerLeft() {
 
         <List>
 
-        <NavLink to={`/`} style={{ textDecoration: 'none' }}>
+        <NavLink to={`/Home`} style={{ textDecoration: 'none' }}>
           <ListItem disablePadding>              
             <ListItemButton>
               <ListItemIcon sx={{ color: primary }}>  <HomeIcon  /> </ListItemIcon>

@@ -42,7 +42,6 @@ function* womenSaga() {
   yield takeEvery('GET_WOMEN_REQUEST', fetchWomenClothing)
 }
 
-
 export default function* categorizedSaga(){
   yield all ([
     fork(jewelerySaga),
