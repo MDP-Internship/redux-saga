@@ -15,7 +15,6 @@ function Basket(){
     const products = a.length>0 ? a:b;
 
     const [isOverAllShown, setIsOverAllShown]=useState(false); 
-
     const inBasket = useSelector((state)=> state.basket.inBasket);
     const totalCost=useSelector((state)=> state.basket.totalCost);
     const dispatch = useDispatch();

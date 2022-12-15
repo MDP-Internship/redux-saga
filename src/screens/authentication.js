@@ -29,11 +29,13 @@ function Authentication(){
     useEffect(()=>{
         if(status===responseStatusEnum.success){
             setLoading(false)
-            navigate("/Home")
+            localStorage.setItem("username", loginData.username);
+            localStorage.setItem("password", loginData.password);
+            navigate("/ShowAll")
         };
         if(status===responseStatusEnum.loading) setLoading(true);
 
-    }, [status, navigate] )
+    }, [status, loginData, navigate] )
     
     return(
         <div className="header">
@@ -65,23 +67,3 @@ function Authentication(){
 )}
 
 export default Authentication;
-
-
-
-/*
-        const initData={
-            username: 'username',    //mor_2314
-            password: 'password',    //83r5^_
-        }
-        const [state,dispatch]= useReducer((state,action)=>{
-switch (action.type) {
-    case 'add':
-       return ( {...p, [name]:event.target.value})
-        break;
-        case 'delete'
-
-    default:
-        break;
-}
-        })
-*/

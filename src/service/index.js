@@ -17,8 +17,7 @@ service.interceptors.response.use(
         window.location.href = "/";
         break;
       case 404:        
-        console.log(404);
-        window.location.href = "/";
+        console.log(404, "not found");
         break;
       default:
         window.location.href = "/";

@@ -1,48 +1,31 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useState} from 'react'
-import { getCategoryRequest } from '../../store/categories/categoryAction'
 import { getJeweleryRequest, getElectronicsRequest, getWomenClothingRequest, getMenClothingRequest } from '../../store/categorizedProduct/categorizedAction'
 import '../../styles/Main.css'
-//import Button from '@mui/material/Button'
-//import { Button } from '../../styles/button';
 import { CustomButton } from '../../components/CustomButton.style'
-import { primary, secondary } from '../../constants/theme'
 import List from '../../components/list/List'
-
 
 function Categories(){
 
-    const [categoryShown, setCategoryShown]= useState(false); 
-    const [flag, setFlag] = useState(true);   
-    const [flag2, setFlag2] = useState(true);  
-
-    const categoryDispatch=useDispatch();
-    const categorizedProductDispatch= useDispatch();
-
-    const showCategory=()=>{     
-        categoryDispatch(getCategoryRequest());
-        setCategoryShown(!categoryShown);
-        setFlag(!flag);
-    }
+    const [flag2, setFlag2] = useState(true); 
+    const dispatch=useDispatch();    
 
     const categories = useSelector(state => { 
       return state.category.category
-    })
-    
-    //console.log(categories);
+    })    
 
     const showCategorizedProducts=(category)=>{
         if(category==='jewelery'){
-            categorizedProductDispatch(getJeweleryRequest());
+            dispatch(getJeweleryRequest());
         }  
         else if(category==='electronics'){
-            categorizedProductDispatch(getElectronicsRequest());
+            dispatch(getElectronicsRequest());
         }
         else if(category==="men's clothing"){
-            categorizedProductDispatch(getMenClothingRequest());
+            dispatch(getMenClothingRequest());
         }
         else if(category==="women's clothing"){
-            categorizedProductDispatch(getWomenClothingRequest());
+            dispatch(getWomenClothingRequest());
         }
         setFlag2(!flag2);         
     }
@@ -53,19 +36,18 @@ function Categories(){
 
     return(
         <div className="header">
-            <CustomButton variant="outlined" textcolor={flag ?  primary :secondary} onClick={showCategory}>Categories</CustomButton>                   
-            { categoryShown === true && (
+            {/* <CustomButton variant="outlined" textcolor={flag ?  primary :secondary} onClick={showCategory}>Categories</CustomButton>                    */}
+            { 
               categories?.map((category)=>(
                 <CustomButton variant="outlined" sx={{marginLeft:2}} key={category} onClick={()=>{showCategorizedProducts(category)}}>{category}</CustomButton>
               ))           
-            ) 
+            
             }
 
-            {   categorizedProducts?.length>0 && categoryShown === true &&(
+            {   categorizedProducts?.length>0 && {/*categoryShown === true */} &&(
                     <div>
                         <List products={categorizedProducts} />
-                    </div>
-                
+                    </div>                
                 )
             }
         </div>

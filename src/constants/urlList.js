@@ -7,4 +7,5 @@ export const Url={
     electronics: '/products/category/electronics',
     men: "/products/category/men's clothing",
     women:"/products/category/women's clothing",    
+    single:"/products/"
 }

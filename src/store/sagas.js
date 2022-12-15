@@ -4,7 +4,8 @@ import { getDataRequestSuccess} from './data/dataSlice'
 import { setCategoryRequest } from './categories/categoryAction'
 import { setJeweleryRequest, setElectronicsRequest,setMenClothingRequest, setWomenClothingRequest } from './categorizedProduct/categorizedAction'
 import { addNewProductRequest } from './addProduct/addAction'
-import { getLoginRequest, getLoginRequestSuccess } from './authentication/loginSlice'
+import { getLoginRequestSuccess } from './authentication/loginSlice'
+import { setSingleRequestSuccess } from './singleProduct/singleProductSlice'
 import { Url } from '../constants/urlList';
 
 function* fetchData() {
@@ -49,6 +50,12 @@ function* fetchLogin() {
 }
 
 
+function* fetchSingle() {
+    const { payload } = yield take('single/getSingleRequest');
+    const data = yield call(get, (Url.single)+payload)
+    yield put(setSingleRequestSuccess(data))
+}
+
 function *watchAll() {
     yield all([
     takeEvery('data/getDataRequest', fetchData),
@@ -59,6 +66,7 @@ function *watchAll() {
     takeEvery('GET_WOMEN_REQUEST', fetchWomenClothing),
     fetchNewProduct(),
     fetchLogin(),
+    fetchSingle(),
     ]);
 }
 

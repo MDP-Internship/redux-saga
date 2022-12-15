@@ -4,7 +4,6 @@ import { responseStatusEnum } from "../../constants/responseStatus";
 export const loginSlicer=createSlice({
     name: 'login',
     initialState:{
-        userData:[],
         token:"",
         responseStatus: responseStatusEnum.idle
     },
@@ -16,10 +15,14 @@ export const loginSlicer=createSlice({
         getLoginRequestSuccess:(state, action)=>{
            state.token= action.payload;
            state.responseStatus= responseStatusEnum.success
+        },
+
+        getLogout:(state)=>{
+            state.responseStatus=responseStatusEnum.idle
         }
 
     }
 });
 
-export const {getLoginRequest, getLoginRequestSuccess}=loginSlicer.actions;
+export const {getLoginRequest, getLoginRequestSuccess, getLogout}=loginSlicer.actions;
 export default loginSlicer.reducer;

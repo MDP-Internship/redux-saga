@@ -6,6 +6,7 @@ import newProductReducer from './addProduct/addReducer'
 import dataSlicer from './data/dataSlice'
 import loginSlice from './authentication/loginSlice'
 import basketReducer from './basket/basketSlice'
+import singleProductSlice from './singleProduct/singleProductSlice'
 
 const allReducers = combineReducers({    
     login: loginSlice,
@@ -13,6 +14,7 @@ const allReducers = combineReducers({
     category: categoryReducer,
     categorizedProduct: categorizedProductReducer,
     newProduct: newProductReducer,
-    basket: basketReducer
+    basket: basketReducer,
+    singleProduct: singleProductSlice
 })
 export default allReducers
