@@ -50,9 +50,12 @@ function* fetchLogin() {
 }
 
 
+//burda payload doğru boş olduğu için fetchde hata var ikinci üründe
+//ama ilk üründe olan şey ikincisinde sıkıntı çıkarıyor
 function* fetchSingle() {
     const { payload } = yield take('single/getSingleRequest');
-    const data = yield call(get, (Url.single)+payload)
+    console.log(payload);
+    const data = yield call(get, ((Url.single)+payload))
     yield put(setSingleRequestSuccess(data))
 }
 

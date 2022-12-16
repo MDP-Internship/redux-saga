@@ -8,6 +8,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { CustomImageListItem } from '../list/style/CustomImageListItem.style';
 import { addProduct} from '../../store/basket/basketSlice';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function List( {products}){
 const dispatch = useDispatch()
@@ -22,15 +23,19 @@ const dispatch = useDispatch()
     <div >
         <ImageList cols={4} sx={{ '&::-webkit-scrollbar': {display: "none"}, marginLeft:10, marginRight:10 }} >
             {products.map((item) => (
+            
+            <Link to={`/product/`+item.id} style={{ textDecoration: 'none', color:"black" }}>
+          
             <CustomImageListItem grid={ isDetailShown===item.id ? true:false} key={item.image}>
-              <img
-                className="image"
-                onClick={() => shown(item.id)}
-                src={`${item.image}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
-                loading="lazy"
-              />
+                <img
+                  className="image"
+                  onClick={() => shown(item.id)}
+                  src={`${item.image}?w=248&fit=crop&auto=format`}
+                  srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+              
               <ImageListItemBar
                 title={item.title}
                 //subtitle={item.author}
@@ -50,6 +55,8 @@ const dispatch = useDispatch()
                   </div>                                            
                  ) }
            </CustomImageListItem> 
+
+           </Link>
           ))}
         </ImageList>
     </div>

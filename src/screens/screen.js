@@ -18,7 +18,7 @@ function Screen() {
             <Route path="/AddProduct" element={<AddProduct/>}/>  
             <Route path="/ShoppingBasket" element={<Basket/>}/>  
             <Route path="/Filtered" element={<Filtered/>}/> 
-            <Route path="product/:productId" element={<Detail />} />
+            <Route path="/product/:productId" element={<Detail/>} />
 
         </Routes>
     </div>

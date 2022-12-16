@@ -4,8 +4,7 @@ import { Button } from "@mui/material";
 export const CustomButton = styled(Button)`
     color: ${(props)=> props.textcolor || 'secondary'};
     font-weight: bold;
-    margin-top:10px
-    
+    margin-top:10px;
 `;
 
 /* 

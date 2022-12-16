@@ -28,7 +28,9 @@ service.interceptors.response.use(
 );
 
 export async function get(url) {
+  console.log(url)
   const response = await service.get(url);
+  console.log(response.data)
   return response.data;
 }
 
@@ -39,47 +41,3 @@ export async function post(url, data) {
 
 
 
-/*
-
-export async function getDataList() {
-  const response = await service.get('/products')
-  return response.data
-}
-
-//categories
-
-export async function getCategoryList() {
-  const response = await service.get('/products/categories');
-  return response.data
-}
-
-/*electronics
-jewelery
-men's clothing
-women's clothing
-
-export async function getJeweleryList() {
-  const response = await service.get('/products/category/jewelery');
-  console.log(response.data)
-  return response.data
-}
-
-
-export async function getElectronicsList() {
-  const response = await service.get('/products/category/electronics');
-  return response.data
-}
-
-
-export async function getMensClothingList() {
-  const response = await service.get("/products/category/men's clothing" );
-  return response.data
-}
-
-export async function getWomensClothingList() {
-  const response = await service.get("/products/category/women's clothing")
-  return response.data
-
-}
-
-*/

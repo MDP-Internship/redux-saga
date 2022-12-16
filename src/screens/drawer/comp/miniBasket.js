@@ -58,7 +58,7 @@ export default function MiniBasket() {
         >
             {products.map((product)=>(   
             (inBasket.includes(product.id)===true) && 
-                <Link to={`product/`+product.id} style={{ textDecoration: 'none', color:"black" }}>
+                <Link to={`/product/`+product.id} key={product.id} style={{ textDecoration: 'none', color:"black" }}>
                     <MenuItem key={product.id} onClick={handleCloseBasketMenu}>
                         <img className="miniImage" src={product.image} alt={product.title}/>
                         <Typography textAlign="center" color={"black"} sx={{fontSize:14, marginLeft:1}}>{(product.title).slice(0, 20)+'...'}</Typography>

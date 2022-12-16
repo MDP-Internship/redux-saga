@@ -13,7 +13,7 @@ export const CustomImageListItem = styled(ImageListItem)`
         flex-direction: row;
         
         .image{
-            width:300px;
+            width:300px; 
             height:300px;
         }
     ` 

@@ -21,7 +21,6 @@ export default function Profile() {
     const status= useSelector((state) => state.login.responseStatus);
 
     useEffect(()=>{
-      console.log(status)
       if(status===responseStatusEnum.idle){
           navigate("/")
       };

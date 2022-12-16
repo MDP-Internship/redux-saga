@@ -38,7 +38,7 @@ function Authentication(){
     }, [status, loginData, navigate] )
     
     return(
-        <div className="header">
+        <div className="header" style={{marginTop:70 }}>
             <h1 style={{color: primary}} >Welcome to Store</h1>
             <h3 >Please Login</h3>
             <Box  sx={{ display:'flex',marginRight: '25%',marginLeft: '25%', alignContent: 'space-between' }}> 
@@ -51,7 +51,7 @@ function Authentication(){
                     </Grid>                
                 </Grid>                         
             </Box> 
-            <CustomButton variant="outlined" onClick={()=>{sendDataDispatch(getLoginRequest(loginData))}}>LOGIN</CustomButton> 
+            <CustomButton style={{marginTop:40}} variant="outlined" onClick={()=>{sendDataDispatch(getLoginRequest(loginData))}}>LOGIN</CustomButton> 
             {
                 loading===true &&(
                     <div className="header">
