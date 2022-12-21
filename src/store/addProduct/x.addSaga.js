@@ -10,7 +10,7 @@ function* fetchNewProduct(data) {
 export default function* addProductSaga() {
   while (true) {
     const { payload } = yield take('POST_NEW_PRODUCT_REQUEST');
-    // console.log(data.payload, 44)
+    //   
     yield call(fetchNewProduct, payload);
   }
 }
@@ -18,7 +18,7 @@ export default function* addProductSaga() {
 /*
 export default function* addProductSaga() {
   const data= yield takeEvery('PUT_NEW_PRODUCT_REQUEST')
-  console.log(data, 22)
+    
 }
 
 */

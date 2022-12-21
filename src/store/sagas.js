@@ -30,13 +30,13 @@ function* fetchElectronics() {
 
 function* fetchMenClothing() {
     const result = yield call(httpService.get, { url: Url.men })
-    console.log(result, 55);
+      
     yield put(setMenClothingRequest(result));
     //const result = await httpService.get({ url: 'https://fakestoreapi.com/carts' })
     //const data = yield call(get, Url.men)
     // httpService.get({ url: Url.men })
     //     .then(function(result){
-    //         console.log(result, 55);    
+    //           
     //         yield put(setMenClothingRequest(result));
     //     })
     
@@ -64,10 +64,10 @@ function* fetchLogin() {
 //ama ilk üründe olan şey ikincisinde sıkıntı çıkarıyor
 function* fetchSingle() {
     const { payload } = yield take('single/getSingleRequest');
-    console.log(payload);
-    console.log((Url.single)+payload);
+      
+      
     const data = yield call(get, ((Url.single)+payload))
-    console.log(data, "service");
+      
     yield put(setSingleRequestSuccess(data))
 }
 

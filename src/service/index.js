@@ -13,11 +13,11 @@ service.interceptors.response.use(
   function (error) {
     switch (error.response.status) {
       case 401:
-        console.log(401,  "Unauthorized");
+          
         window.location.href = "/";
         break;
       case 404:        
-        console.log(404, "not found");
+          
         break;
       default:
         window.location.href = "/";
@@ -34,17 +34,17 @@ export const httpService = {
   },
   post: async ({ url, data }) => {
     const response = await service.post(url, data);
-    console.log(url)
-    console.log(response.data)
+      
+      
     return response.data
   }
 }
 
 
 export async function get(url) {
-  console.log(url)
+    
   const response = await service.get(url);
-  console.log(response.data)
+    
   return response.data;
 }
 

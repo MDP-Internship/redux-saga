@@ -6,7 +6,7 @@ import { getDataRequestSuccess} from './dataSlice'
 function* fetchData() {
     const data = yield call(getDataList)
     yield put(getDataRequestSuccess(data))
-    console.log(data)
+      
 }
 
 export default function* dataSaga() {

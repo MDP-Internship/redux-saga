@@ -5,7 +5,7 @@ const initalCategorizedProduct={
 const categorizedProductReducer=(state=initalCategorizedProduct, action) => {
     switch (action.type) {
       case 'SET_JEWELERY_REQUEST':
-        console.log("jewelery request");
+          
         return {
           ...state,       
           categorizedProducts: action.data     

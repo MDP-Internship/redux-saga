@@ -12,7 +12,7 @@ import { Box } from "@mui/material";
 function Detail(){
     const { productId } = useParams();
 
-    console.log(productId)
+      
     const dispatch=useDispatch();
     const navigate=useNavigate()
 

@@ -4,7 +4,7 @@ import { setCategoryRequest } from './categoryAction'
 
 function* fetchCategoryData() {
     const data = yield call(getCategoryList)
-    console.log(data)
+      
     yield put(setCategoryRequest(data))
 }
 
