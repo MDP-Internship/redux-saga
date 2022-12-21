@@ -5,7 +5,11 @@ import { css } from "@emotion/react";
 export const CustomImageListItem = styled(ImageListItem)`
     /* grid-column : ${(props)=> props.grid};     */
     .image{
-        object-fit:fill
+        object-fit:fill;
+        width:250px; 
+        height:300px;
+        margin-top:100px
+        //bunlar işe yaramıyor sanki
     }
 
     ${((props) => props.grid && css`

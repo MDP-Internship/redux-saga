@@ -27,6 +27,20 @@ service.interceptors.response.use(
   }
 );
 
+export const httpService = {
+  get: async ({ url }) => {
+    const response = await service.get(url);
+    return response.data;
+  },
+  post: async ({ url, data }) => {
+    const response = await service.post(url, data);
+    console.log(url)
+    console.log(response.data)
+    return response.data
+  }
+}
+
+
 export async function get(url) {
   console.log(url)
   const response = await service.get(url);
@@ -38,6 +52,7 @@ export async function post(url, data) {
   const response = await service.post( url , data );
   return response.data
 }
+
 
 
 

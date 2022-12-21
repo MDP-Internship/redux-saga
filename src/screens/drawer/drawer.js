@@ -35,11 +35,10 @@ export default function NavBar() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box >
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          
+      <AppBar position="fixed" open={open} >
+        <Toolbar>    
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -55,9 +54,11 @@ export default function NavBar() {
               Store
             </Typography>
           </Link>
-
-          <MiniBasket/>
-          <Profile/>              
+          
+          <Box sx={{ position: "relative", display:"flex" ,flexDirection:"row", justifyContent:"flex-end"}}>
+            <MiniBasket />
+            <Profile/>
+          </Box>          
 
         </Toolbar>
       </AppBar>

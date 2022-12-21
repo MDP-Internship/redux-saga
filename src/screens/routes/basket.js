@@ -7,6 +7,7 @@ import { CustomButton } from '../../components/CustomButton.style';
 import { useState } from 'react';
 import { addProduct, removeProduct, deleteProduct, emptyBasket } from '../../store/basket/basketSlice';
 import { useNavigate } from 'react-router-dom';
+import { List, Typography } from '@mui/material';
 
 function Basket(){
     
@@ -32,19 +33,35 @@ function Basket(){
     }
     
     return(
-    <div className="header">      
-        {(inBasket.length===0) && <p onClick={()=>{navigate("/ShowAll")}} style={{cursor:"pointer"}}>Basket is empty, keep Shopping</p> }
+    <div>      
+        {(inBasket.length===0) && <p onClick={()=>{navigate("/ShowAll")}} style={{cursor:"pointer", textAlign:"center"}}>Basket is empty, keep Shopping</p> }
         <div>
-        {(inBasket.length!==0) &&(
-            <div>
+        {(inBasket.length!==0) &&(            
+            <div> 
+                <div style={{display:"flex", flexDirection:"row", justifyContent:"center", alignItems:"baseline"}}>
+                    <Typography>Total Cost: ${totalCost.toFixed(2)}</Typography>
+                    <div style={{marginLeft:50}}>
+                        <CustomButton 
+                            variant="outlined" 
+                            onClick={OverAll}
+                            sx={{color:"white", backgroundColor:"#689f38",  
+                            '&:hover': {backgroundColor: '#fff',  color: '#689f38' }, 
+                            }}
+                        >
+                        BUY
+                        </CustomButton>
+                    </div>                    
+                </div>           
+            
+            <List>
             {products.map((product)=>(   
             (inBasket.includes(product.id)===true) && 
-                <div className="detailContainer" key={product.id}>                 
-                    <div><img className="image1" src={product.image} alt={product.title}/></div>
-                    <div>
-                        {product.title}
-                        <div>{"Pieces: " + getOccurrence(inBasket, product.id)}</div>
-                        <div>{"Price: " + (product.price*getOccurrence(inBasket, product.id)).toFixed(2) }</div>
+                <div className="basketContainer" key={product.id}>                 
+                    <div><img className="basketImage" src={product.image} alt={product.title}/></div>
+                    <div className='basketType'>
+                        <h3 style={{color:"#1f4120"}}>{product.title}</h3>
+                        <div style={{marginBottom:5}}>{"Pieces: " + getOccurrence(inBasket, product.id)}</div>
+                        <div>{"Price: $" + (product.price*getOccurrence(inBasket, product.id)).toFixed(2) }</div>
                     </div>
 
                     <div className='basketButton'>
@@ -70,16 +87,15 @@ function Basket(){
                               <RemoveCircleOutlineIcon />                          
                             </IconButton>                        
                         </div>
-                    </div>
+                    </div>                   
                 </div> 
             ))}
-            <CustomButton variant="outlined" onClick={OverAll}>BUY</CustomButton>          
+            </List>          
         </div>            
         )}
           {(isOverAllShown===true) &&(
-                <div>                       
+                <div style={{textAlign:"center"}}>                       
                     <p>Shopping is successful!</p>
-                    <p>Total Price: ${totalCost.toFixed(2)}</p>
                 </div>
           )}
         </div>       
