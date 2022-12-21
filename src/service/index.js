@@ -34,8 +34,6 @@ export const httpService = {
   },
   post: async ({ url, data }) => {
     const response = await service.post(url, data);
-    console.log(url)
-    console.log(response.data)
     return response.data
   }
 }

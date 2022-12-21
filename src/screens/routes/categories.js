@@ -3,7 +3,7 @@ import { useState} from 'react'
 import { getJeweleryRequest, getElectronicsRequest, getWomenClothingRequest, getMenClothingRequest } from '../../store/categorizedProduct/categorizedAction'
 import '../../styles/Main.css'
 import { CustomButton } from '../../components/CustomButton.style'
-import List from '../../components/list/List'
+import ListProduct from '../../components/list/List'
 
 function Categories(){
 
@@ -46,7 +46,7 @@ function Categories(){
 
             {   categorizedProducts?.length>0 && {/*categoryShown === true */} &&(
                     <div>
-                        <List products={categorizedProducts} />
+                        <ListProduct products={categorizedProducts} />
                     </div>                
                 )
             }

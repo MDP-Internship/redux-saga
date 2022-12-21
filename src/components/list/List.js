@@ -1,66 +1,61 @@
-import { useState} from 'react';
-import Details from '../product_detail'
 import * as React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { CustomImageListItem } from '../list/style/CustomImageListItem.style';
 import { addProduct} from '../../store/basket/basketSlice';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Grid } from '@mui/material';
 
-function List( {products}){
-const dispatch = useDispatch()
-    const [isDetailShown, setIsDetailShown]= useState(null);  
+function ListProduct( {products}){
 
-    const shown=(id)=>{
-      setIsDetailShown(isDetailShown===id ? -1:id);
-    }
+    const dispatch = useDispatch()
 
     return(
 
     <div >
-        <ImageList cols={4} sx={{ '&::-webkit-scrollbar': {display: "none"}, marginLeft:10, marginRight:10 }} >
-            {products.map((item) => (
-            
-            <Link to={`/product/`+item.id} style={{ textDecoration: 'none', color:"black" }}>
-          
-            <CustomImageListItem grid={ isDetailShown===item.id ? true:false} key={item.image}>
-                <img
-                  className="image"
-                  onClick={() => shown(item.id)}
-                  src={`${item.image}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading="lazy"
-                />
-              
-              <ImageListItemBar
-                title={item.title}
-                //subtitle={item.author}
-                actionIcon={
-                  <IconButton
-                    onClick={()=>dispatch(addProduct(item))}
-                    sx={{ color: "#64dd17" }}
-                    aria-label={`info about ${item.title}`}
-                  >
-                    <AddShoppingCartIcon />
-                  </IconButton>
-                }
-              />  
-               {isDetailShown === item.id && (
-                  <div style={{display:"flex", direction:"row" }}>
-                    <Details product={item} />
-                  </div>                                            
-                 ) }
-           </CustomImageListItem> 
-
-           </Link>
-          ))}
-        </ImageList>
+      <Grid container sx={{marginLeft:10, width:"auto", '&::-webkit-scrollbar': {display: "none"}}}>
+      {products.map((item) => (
+        <Card sx={{ maxWidth: 270, margin:1,}} key={item.id}>
+          <Link to={`/product/`+item.id} style={{ textDecoration: 'none', color:"black" }}>
+            <CardMedia
+              component="img"
+              height="auto"
+              width="260"
+              src={item.image}
+              alt="green iguana"
+              sx={{objectFit: "fill", maxHeight:270, padding:1,}}
+            />
+          </Link>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {item.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Price: ${item.price}
+            </Typography>
+          </CardContent>
+          <CardActions >
+            <IconButton
+                onClick={()=>dispatch(addProduct(item))}
+                sx={{ color: "#32a436" }}
+                aria-label={`info about ${item.title}`}
+              >
+                <AddShoppingCartIcon />
+            </IconButton>
+            <Button size="small" color='secondary' component={Link} to={`/product/`+item.id}>Learn More</Button>
+          </CardActions>
+        </Card>
+      ))}
+      </Grid>
+ 
     </div>
     )
 } 
 
-export default List;
+export default ListProduct;

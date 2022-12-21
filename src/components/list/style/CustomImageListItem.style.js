@@ -8,8 +8,7 @@ export const CustomImageListItem = styled(ImageListItem)`
         object-fit:fill;
         width:250px; 
         height:300px;
-        margin-top:100px
-        //bunlar işe yaramıyor sanki
+        margin-top:10px
     }
 
     ${((props) => props.grid && css`

@@ -10,65 +10,52 @@ import { setSingleRequestSuccess } from './singleProduct/singleProductSlice'
 import { Url } from '../constants/urlList';
 
 function* fetchData() {
-    const data = yield call(get, Url.main)
+    const data = yield call(httpService.get, { url: Url.main })
     yield put(getDataRequestSuccess(data))
 }
 function* fetchCategoryData() {
-    const data = yield call(get, Url.category)
+    const data = yield call(httpService.get, { url: Url.category })
     yield put(setCategoryRequest(data))
 }
 
 function* fetchJewelery() {
-    const data = yield call(get, Url.jewelery)
+    const data = yield call(httpService.get, { url: Url.jewelery })
     yield put(setJeweleryRequest(data))
 }
 
 function* fetchElectronics() {
-    const data = yield call(get, Url.electronics)
+    const data = yield call(httpService.get, { url:Url.electronics } )
     yield put(setElectronicsRequest(data))  
 }
 
 function* fetchMenClothing() {
     const result = yield call(httpService.get, { url: Url.men })
-    console.log(result, 55);
     yield put(setMenClothingRequest(result));
-    //const result = await httpService.get({ url: 'https://fakestoreapi.com/carts' })
-    //const data = yield call(get, Url.men)
-    // httpService.get({ url: Url.men })
-    //     .then(function(result){
-    //         console.log(result, 55);    
-    //         yield put(setMenClothingRequest(result));
-    //     })
-    
 }
 
 function* fetchWomenClothing() {
-    const data = yield call(get, Url.women)
+    const data = yield call(httpService.get, { url:Url.women })
     yield put(setWomenClothingRequest(data))
 }
 
 function* fetchNewProduct() {
     const { payload } = yield take('POST_NEW_PRODUCT_REQUEST');
-    const newData = yield call(post, Url.main, payload);
+    const newData = yield call(httpService.post, { url: Url.main , data:payload });
     yield put(addNewProductRequest(newData));
 }
 
 function* fetchLogin() {
     const { payload } = yield take('login/getLoginRequest');
-    const token = yield call(post, Url.authentication, payload);
+    const token = yield call(httpService.post, { url: Url.authentication, data:payload });
     yield put(getLoginRequestSuccess(token))
 }
 
-
-//burda payload doğru boş olduğu için fetchde hata var ikinci üründe
-//ama ilk üründe olan şey ikincisinde sıkıntı çıkarıyor
 function* fetchSingle() {
-    const { payload } = yield take('single/getSingleRequest');
-    console.log(payload);
-    console.log((Url.single)+payload);
-    const data = yield call(get, ((Url.single)+payload))
-    console.log(data, "service");
-    yield put(setSingleRequestSuccess(data))
+    while (true) {
+        const { payload: id } = yield take('single/getSingleRequest');
+        const data = yield call(httpService.get, {url: (Url.single) + id})    
+        yield put(setSingleRequestSuccess(data))
+    }
 }
 
 function *watchAll() {

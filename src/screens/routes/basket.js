@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { addProduct, removeProduct, deleteProduct, emptyBasket } from '../../store/basket/basketSlice';
 import { useNavigate } from 'react-router-dom';
 import { List, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function Basket(){
     
@@ -57,7 +58,11 @@ function Basket(){
             {products.map((product)=>(   
             (inBasket.includes(product.id)===true) && 
                 <div className="basketContainer" key={product.id}>                 
-                    <div><img className="basketImage" src={product.image} alt={product.title}/></div>
+                    <div>
+                        <Link to={`/product/`+product.id} style={{ textDecoration: 'none', color:"black" }}>
+                            <img className="basketImage" src={product.image} alt={product.title}/>
+                        </Link>
+                    </div>
                     <div className='basketType'>
                         <h3 style={{color:"#1f4120"}}>{product.title}</h3>
                         <div style={{marginBottom:5}}>{"Pieces: " + getOccurrence(inBasket, product.id)}</div>

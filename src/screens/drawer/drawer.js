@@ -9,7 +9,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import MenuIcon from '@mui/icons-material/Menu';
+import TuneIcon from '@mui/icons-material/Tune';
 import { Main } from './styles/Main.style';
 import { AppBar } from './styles/AppBarr.style';
 import { DrawerHeader } from './styles/DrawerHeader.style';
@@ -38,7 +38,8 @@ export default function NavBar() {
     <Box >
       <CssBaseline />
       <AppBar position="fixed" open={open} >
-        <Toolbar>    
+        <Toolbar sx={{ justifyContent: "space-between" }}> 
+          
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -46,7 +47,7 @@ export default function NavBar() {
             edge="start"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <MenuIcon />
+            <TuneIcon />
           </IconButton>
 
           <Link to={`/Showall`} style={{ textDecoration: 'none', color:"white" }}>
@@ -55,7 +56,11 @@ export default function NavBar() {
             </Typography>
           </Link>
           
-          <Box sx={{ position: "relative", display:"flex" ,flexDirection:"row", justifyContent:"flex-end"}}>
+          <Box   m={1}
+                 display="flex"
+                 justifyContent="flex-end"
+                 alignItems="flex-end"
+          >
             <MiniBasket />
             <Profile/>
           </Box>          
